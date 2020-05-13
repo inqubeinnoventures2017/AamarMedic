@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/col_holder"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/textColorWhite">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/_20dp">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_0dp"
+                android:layout_weight="1"
+                android:fitsSystemWindows="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/edt_mbno"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableRight="@drawable/search"
+                        android:hint="@string/MobileNo"
+                        android:paddingRight="@dimen/_15dp"
+                        android:textSize="@dimen/_15sp"
+                        android:maxLength="10"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:focusable="true"
+                        android:textAlignment="textStart" />
+
+                    <EditText
+                        android:id="@+id/edt_patientname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/PatientName"
+                        android:textSize="@dimen/_15sp"
+                        android:inputType="text"
+                        android:textAlignment="textStart" />
+                    <EditText
+                        android:id="@+id/edt_aadhar_no"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/AadharNo"
+                        android:textSize="@dimen/_15sp"
+                        android:maxLength="12"
+                        android:singleLine="true"
+                        android:inputType="number"
+                        android:textAlignment="textStart" />
+                    <EditText
+                        android:id="@+id/edt_emailid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/Email_id"
+                        android:textSize="@dimen/_15sp"
+                        android:singleLine="true"
+                        android:inputType="textEmailAddress"
+                        android:textAlignment="textStart" />
+                    <EditText
+                        android:id="@+id/edt_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/Address"
+                        android:textSize="@dimen/_15sp"
+                        android:singleLine="true"
+                        android:inputType="text"
+                        android:textAlignment="textStart" />
+                    <EditText
+                        android:id="@+id/edt_city"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/City"
+                        android:textSize="@dimen/_15sp"
+                        android:singleLine="true"
+                        android:inputType="text"
+                        android:textAlignment="textStart" />
+                    <EditText
+                        android:id="@+id/edt_area"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/area"
+                        android:textSize="@dimen/_15sp"
+                        android:singleLine="true"
+                        android:inputType="text"
+                        android:textAlignment="textStart" />
+                    <EditText
+                        android:id="@+id/edt_pincode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/pincode"
+                        android:textSize="@dimen/_15sp"
+                        android:singleLine="true"
+                        android:inputType="number"
+                        android:maxLength="6"
+                        android:textAlignment="textStart" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gender"
+                        android:textSize="@dimen/_15sp"
+                        android:textColor="@color/textColorBlack"
+                        android:paddingTop="@dimen/_10dp" />
+
+                    <RadioGroup
+                        android:id="@+id/rg_gender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/rb_male"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/male"
+                            android:padding="@dimen/_5dp"
+                            android:checked="false"
+                            android:button="@drawable/custom_radio_button"/>
+
+                        <RadioButton
+                            android:id="@+id/rb_female"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/female"
+                            android:padding="@dimen/_5dp"
+                            android:checked="false"
+                            android:button="@drawable/custom_radio_button" />
+
+                        <RadioButton
+                            android:id="@+id/rb_other"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/other"
+                            android:padding="@dimen/_5dp"
+                            android:checked="false"
+                            android:button="@drawable/custom_radio_button" />
+
+                    </RadioGroup>
+                    <TextView
+                        android:id="@+id/tv_date_of_birth"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/date_of_birth"
+                        android:drawableRight="@drawable/date_cal"
+                        android:textSize="@dimen/_15sp"
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:textAlignment="textStart" />
+                </LinearLayout>
+            </ScrollView>
+            <Button
+                android:id="@+id/btn_personal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Next"
+                android:textSize="@dimen/_15sp"
+                android:textColor="@color/textColorWhite"
+                android:textAllCaps="false"
+                android:background="@drawable/submit"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_10dp" />
+        </LinearLayout>
+    </LinearLayout>
+    <ProgressBar
+        android:id="@+id/pb_loader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:indeterminateDrawable="@drawable/epoc_progress"
+        android:indeterminateTintMode="src_atop"
+        android:visibility="gone" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

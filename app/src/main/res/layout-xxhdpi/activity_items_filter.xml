@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/textColorWhite">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#E0E0E0"
+            android:gravity="left"
+            android:padding="@dimen/_15dp"
+            android:text="@string/Filter"
+            android:textColor="@color/textColorBlack"
+            android:textSize="@dimen/_20sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/_20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10dp"
+                android:background="@drawable/edt_style"
+                android:drawableLeft="@drawable/otc"
+                android:drawablePadding="@dimen/_10dp"
+                android:padding="@dimen/_15dp"
+                android:text="@string/OTC_Medicine"
+                android:textColor="@color/textColorBlack"
+                android:textSize="@dimen/_15sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20dp"
+                android:background="@drawable/edt_style"
+                android:drawableLeft="@drawable/wellness"
+                android:drawablePadding="@dimen/_10dp"
+                android:padding="@dimen/_15dp"
+                android:text="@string/Wellness"
+                android:textColor="@color/textColorBlack"
+                android:textSize="@dimen/_15sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20dp"
+                android:background="@drawable/edt_style"
+                android:drawableLeft="@drawable/consumable"
+                android:drawablePadding="@dimen/_10dp"
+                android:padding="@dimen/_15dp"
+                android:text="@string/Consumable_items"
+                android:textColor="@color/textColorBlack"
+                android:textSize="@dimen/_15sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1dp"
+            android:background="@android:color/darker_gray" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Done"
+            android:textSize="@dimen/_15sp"
+            android:textColor="@color/textColorBlack"
+            android:gravity="end"
+            android:layout_marginTop="@dimen/_10dp"
+            android:paddingRight="@dimen/_20dp" />
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

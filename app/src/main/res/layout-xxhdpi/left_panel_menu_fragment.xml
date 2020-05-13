@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_menu"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/drawer"
+    android:orientation="vertical"
+    android:padding="@dimen/_30dp">
+
+    <ImageView
+        android:id="@+id/imv_user"
+        android:layout_width="@dimen/_120dp"
+        android:layout_height="@dimen/_120dp"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="centerCrop"
+        android:src="@drawable/agent_placeholder" />
+
+
+
+            <TextView
+                android:id="@+id/tv_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginTop="@dimen/_10dp"
+                android:text="@string/user_name"
+                android:textColor="@color/textColorWhite"
+                android:textSize="@dimen/_15sp"></TextView>
+
+            <TextView
+                android:id="@+id/tv_wallet_balance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10dp"
+                android:drawableLeft="@drawable/wallet"
+                android:drawableRight="@drawable/right"
+                android:drawablePadding="@dimen/_10dp"
+                android:gravity="center_vertical"
+                android:padding="@dimen/_10dp"
+                android:text="@string/wallet_balance"
+                android:textColor="@color/textColorWhite"
+                android:textSize="@dimen/_12sp" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_0dp"
+        android:layout_weight="1"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_my_order"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10dp"
+                android:drawableRight="@drawable/right"
+                android:drawablePadding="@dimen/_10dp"
+                android:gravity="center_vertical"
+                android:padding="@dimen/_10dp"
+                android:text="@string/My_Order"
+                android:textColor="@color/textColorWhite"
+                android:textSize="@dimen/_12sp" />
+
+            <TextView
+                android:id="@+id/tv_my_booking"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10dp"
+                android:drawableRight="@drawable/right"
+                android:drawablePadding="@dimen/_10dp"
+                android:gravity="center_vertical"
+                android:padding="@dimen/_10dp"
+                android:text="@string/My_Booking"
+                android:textColor="@color/textColorWhite"
+                android:textSize="@dimen/_12sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_2dp"
+                android:layout_marginTop="@dimen/_5dp"
+                android:background="@drawable/line" />
+
+            <TextView
+                android:id="@+id/tv_otc_medicine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10dp"
+                android:drawableLeft="@drawable/otc"
+                android:drawableRight="@drawable/right"
+                android:drawablePadding="@dimen/_10dp"
+                android:gravity="center_vertical"
+                android:padding="@dimen/_10dp"
+                android:text="@string/OTC_Medicine"
+                android:textColor="@color/textColorWhite"
+                android:textSize="@dimen/_12sp" />
+
+
+            <TextView
+                android:id="@+id/tv_wellness_items"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10dp"
+                android:drawableLeft="@drawable/wellness"
+                android:drawableRight="@drawable/right"
+                android:drawablePadding="@dimen/_10dp"
+                android:gravity="center_vertical"
+                android:padding="@dimen/_10dp"
+                android:text="@string/Wellness"
+                android:textColor="@color/textColorWhite"
+                android:textSize="@dimen/_12sp" />
+
+
+            <TextView
+                android:id="@+id/tv_consumable_items"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10dp"
+                android:drawableLeft="@drawable/consumable"
+                android:drawableRight="@drawable/right"
+                android:drawablePadding="@dimen/_10dp"
+                android:gravity="center_vertical"
+                android:padding="@dimen/_10dp"
+                android:text="@string/Consumable_items"
+                android:textColor="@color/textColorWhite"
+                android:textSize="@dimen/_12sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1dp"
+                android:layout_marginTop="@dimen/_5dp"
+                android:background="@drawable/line" />
+
+            <TextView
+                android:id="@+id/tv_logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10dp"
+                android:drawablePadding="@dimen/_10dp"
+                android:gravity="center_vertical"
+                android:padding="@dimen/_10dp"
+                android:text="@string/Logout"
+                android:textColor="@color/textColorWhite"
+                android:textSize="@dimen/_12sp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/pb_loader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_30dp"
+        android:indeterminate="true"
+        android:indeterminateDrawable="@drawable/epoc_progress"
+        android:indeterminateTintMode="src_atop"
+        android:visibility="gone" />
+</LinearLayout>

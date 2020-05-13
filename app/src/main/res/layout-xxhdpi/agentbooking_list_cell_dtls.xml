@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="center_vertical"
+    android:padding="@dimen/_10dp">
+
+    <LinearLayout
+        android:id="@+id/ll_main_container_booking_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/edt_style"
+        android:orientation="vertical"
+        android:padding="@dimen/_20sp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="@string/PatientName"
+                android:textColor="@color/textColorBlack"
+                android:textSize="@dimen/_12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_patient_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:textSize="@dimen/_12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="@string/Patient_Addr"
+                android:textColor="@color/textColorBlack"
+                android:textSize="@dimen/_12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_patient_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:textSize="@dimen/_12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="@string/Patinet_Mobile_No"
+                android:textColor="@color/textColorBlack"
+                android:textSize="@dimen/_12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_patient_Mbno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:textSize="@dimen/_12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="@string/DoctorsName"
+                android:textColor="@color/textColorBlack"
+                android:textSize="@dimen/_12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_doc_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:textSize="@dimen/_12sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="@string/Specialization"
+                android:textColor="@color/textColorBlack"
+                android:textSize="@dimen/_12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_doctors_spec"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:textSize="@dimen/_12sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="@string/Clinic"
+                android:textColor="@color/textColorBlack"
+                android:textSize="@dimen/_12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_clinic_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:textSize="@dimen/_12sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="@string/DcotorTime"
+                android:textColor="@color/textColorBlack"
+                android:textSize="@dimen/_12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_doctor_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:textSize="@dimen/_12sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="@string/Date_of_Appointment"
+                android:textColor="@color/textColorBlack"
+                android:textSize="@dimen/_12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_date_of_appointment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:textSize="@dimen/_12sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="@string/Registered_on"
+                android:textColor="@color/textColorBlack"
+                android:textSize="@dimen/_12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_registered_on"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:textSize="@dimen/_12sp" />
+        </LinearLayout>
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            android:layout_weight="1"
+            android:text="@string/Remarks"
+            android:textColor="@color/textColorBlack"
+            android:textSize="@dimen/_12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_remark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            android:layout_weight="1"
+            android:textSize="@dimen/_12sp" />
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="@string/Status"
+                android:textColor="@color/textColorBlack"
+                android:textSize="@dimen/_12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="Not Attended"
+                android:textColor="#F44336"
+                android:textSize="@dimen/_12sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_view_details_ok"
+            android:layout_width="@dimen/_60dp"
+            android:layout_height="@dimen/_30dp"
+            android:layout_marginTop="@dimen/_20dp"
+            android:text="@string/ok"
+            android:layout_gravity="center_horizontal|bottom"
+            android:background="@drawable/ok_bg"
+            android:textColor="@color/textColorBlack"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_10sp"
+            />
+
+    </LinearLayout>
+</LinearLayout>

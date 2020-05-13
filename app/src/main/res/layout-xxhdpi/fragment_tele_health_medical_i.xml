@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/col_holder"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/textColorWhite">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/_10dp"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_0dp"
+            android:layout_weight="1"
+            android:fitsSystemWindows="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/_10dp">
+
+                <EditText
+                    android:id="@+id/edt_body_temp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/f"
+                    android:hint="@string/body_temp"
+                    android:paddingRight="@dimen/_15dp"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/textColorBlack"
+                    android:textSize="@dimen/_15sp" />
+
+                <CheckBox
+                    android:id="@+id/chk_having_cough"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:checked="false"
+                    android:drawableRight="@drawable/checkbox"
+                    android:paddingTop="@dimen/_10dp"
+                    android:text="@string/are_you_having_cough"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/textColorBlack"
+                    android:textSize="@dimen/_15sp" />
+
+                <LinearLayout
+                    android:id="@+id/ll_cough_pattern"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/_10dp"
+                        android:text="@string/cough_pattern"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="@dimen/_15sp" />
+
+                    <RadioGroup
+                        android:id="@+id/rg_cough_pattern"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/rb_wet"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/custom_radio_button"
+                            android:checked="false"
+                            android:padding="@dimen/_5dp"
+                            android:text="@string/wet" />
+
+                        <RadioButton
+                            android:id="@+id/rb_dry"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/custom_radio_button"
+                            android:checked="false"
+                            android:padding="@dimen/_5dp"
+                            android:text="@string/dry" />
+                    </RadioGroup>
+                </LinearLayout>
+
+                <CheckBox
+                    android:id="@+id/chk_cough_more_than_15days"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:checked="false"
+                    android:drawableRight="@drawable/checkbox"
+                    android:paddingTop="@dimen/_10dp"
+                    android:text="@string/cough_morethan_15days"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/textColorBlack"
+                    android:textSize="@dimen/_15sp" />
+
+                <CheckBox
+                    android:id="@+id/chk_having_shortness_breath"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:checked="false"
+                    android:drawableRight="@drawable/checkbox"
+                    android:paddingTop="@dimen/_10dp"
+                    android:text="@string/are_you_having_shortness_breath"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/textColorBlack"
+                    android:textSize="@dimen/_15sp" />
+
+                <LinearLayout
+                    android:id="@+id/ll_shortness_breath"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/_10dp"
+                        android:text="@string/shortness_breath"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="@dimen/_15sp" />
+
+                    <RadioGroup
+                        android:id="@+id/rg_shortness_breath"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/rb_acute"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/custom_radio_button"
+                            android:checked="false"
+                            android:padding="@dimen/_5dp"
+                            android:text="@string/acute" />
+
+                        <RadioButton
+                            android:id="@+id/rb_under_control"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/custom_radio_button"
+                            android:checked="false"
+                            android:padding="@dimen/_5dp"
+                            android:text="@string/undercontrol" />
+                    </RadioGroup>
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+        <Button
+            android:id="@+id/btn_medical_i"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_10dp"
+            android:background="@drawable/submit"
+            android:text="@string/Next"
+            android:textAllCaps="false"
+            android:textColor="@color/textColorWhite"
+            android:textSize="@dimen/_15sp" />
+
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/col_holder"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/textColorWhite">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/ll_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/_20dp">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            >
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/_120dp"
+                android:layout_height="@dimen/_120dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_10dp"
+                app:cardCornerRadius="@dimen/_60dp">
+
+                <ImageView
+                    android:id="@+id/imv_user_img"
+                    android:layout_width="@dimen/_120dp"
+                    android:layout_height="@dimen/_120dp"
+                    android:layout_gravity="center_horizontal"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/agent_placeholder" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imv_user_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:elevation="@dimen/_10dp"
+                app:srcCompat="@drawable/edit" />
+        </FrameLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_10dp"
+            android:background="@drawable/shape_1"
+            android:orientation="vertical"
+            android:padding="@dimen/_15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:drawableLeft="@drawable/name"
+                    android:drawablePadding="@dimen/_10dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/name"
+                    android:textColor="@color/textColorBlack"
+                    android:textSize="@dimen/_12sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/edt_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/edt_style"
+                    android:inputType="text"
+                    android:padding="@dimen/_10dp"
+                    android:singleLine="true"
+                    android:textSize="@dimen/_12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:drawableLeft="@drawable/mobile_usr"
+                    android:drawablePadding="@dimen/_10dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/MobileNo"
+                    android:textColor="@color/textColorBlack"
+                    android:textSize="@dimen/_12sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/edt_mobileno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/edt_style"
+                    android:inputType="number"
+                    android:maxLength="@string/mblength"
+                    android:padding="@dimen/_10dp"
+                    android:singleLine="true"
+                    android:textSize="@dimen/_12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:drawableLeft="@drawable/email"
+                    android:drawablePadding="@dimen/_10dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/Email_id"
+                    android:textColor="@color/textColorBlack"
+                    android:textSize="@dimen/_12sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/edt_emailid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/edt_style"
+                    android:inputType="text"
+                    android:padding="@dimen/_10dp"
+                    android:singleLine="true"
+                    android:textSize="@dimen/_12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:drawableLeft="@drawable/email"
+                    android:drawablePadding="@dimen/_10dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/Language"
+                    android:textColor="@color/textColorBlack"
+                    android:textSize="@dimen/_12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_language"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/edt_style"
+                    android:drawableRight="@drawable/down_arrow"
+                    android:drawablePadding="@dimen/_10dp"
+                    android:inputType="text"
+                    android:padding="@dimen/_10dp"
+                    android:textSize="@dimen/_12sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_30dp"
+                android:background="@drawable/submit"
+                android:text="@string/submit"
+                android:textAllCaps="false"
+                android:textColor="@color/textColorWhite"
+                android:textSize="@dimen/_15sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/pb_loader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:indeterminateDrawable="@drawable/epoc_progress"
+        android:indeterminateTintMode="src_atop"
+        android:visibility="gone" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
