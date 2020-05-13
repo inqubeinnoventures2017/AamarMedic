@@ -239,10 +239,12 @@ public class AgentProfileDetailsFragment extends BaseFragment implements AllInte
                 case Config.ENGLISH:
                     ((BaseActivity) getActivity()).saveDataPreference(Config.SELECTED_LANGUAGE, Config.ENGLISH);
                     UtilClass.getInstance().setLocale(getActivity(), "en");
+                    ((BaseActivity)getActivity()).saveUserPreference(Config.LANGUAGE_ID, SelectedLanguageId);
                     break;
                 case Config.SPANISH:
                     ((BaseActivity) getActivity()).saveDataPreference(Config.SELECTED_LANGUAGE, Config.SPANISH);
                     UtilClass.getInstance().setLocale(getActivity(), "es");
+                    ((BaseActivity)getActivity()).saveUserPreference(Config.LANGUAGE_ID, SelectedLanguageId);
                     break;
             }
             startActivity(new Intent(getActivity(), AgentDashboardMainFragmentActivity.class));
@@ -317,7 +319,7 @@ public class AgentProfileDetailsFragment extends BaseFragment implements AllInte
             String selectedLanguage = listLang.get(Integer.parseInt(str[1])).getLanguageName();
             SelectedLanguageId = ""+listLang.get(Integer.parseInt(str[1])).get_id();
             tv_lang.setText(" "+selectedLanguage);
-            System.out.println("SelectedLanguageId:"+SelectedLanguageId);
+            //System.out.println("SelectedLanguageId:"+SelectedLanguageId);
         }
     }
 
@@ -366,7 +368,7 @@ public class AgentProfileDetailsFragment extends BaseFragment implements AllInte
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        System.out.println( "RETURN "+requestCode+"  "+resultCode +" "+data.getDataString());
+        //System.out.println( "RETURN "+requestCode+"  "+resultCode +" "+data.getDataString());
         switch (requestCode) {
             case Config.MY_PERMISSIONS_REQUEST_CAMERA:
                 if (resultCode == Activity.RESULT_OK) {
@@ -376,15 +378,15 @@ public class AgentProfileDetailsFragment extends BaseFragment implements AllInte
                         String uriString = uri.toString();
                         if (uriString.contains("content://")) {
 
-                            System.out.println(" URI STRING " + uriString);
+                            //.out.println(" URI STRING " + uriString);
                             File myFile = null;
                             String displayName = null;
                             fileUri = Uri.parse(uriString);
-                            System.out.println("fileUri:"+fileUri);
+                            //System.out.println("fileUri:"+fileUri);
 
                             myFile = FileUtils.getFile(getActivity(), uri);
                             String path = myFile.getAbsolutePath();
-                            System.out.println("path:"+path);
+                            //System.out.println("path:"+path);
                             Cursor cursor = null;
                             try {
                                 cursor = getActivity().getContentResolver().query(uri, null, null, null, null);
@@ -392,7 +394,7 @@ public class AgentProfileDetailsFragment extends BaseFragment implements AllInte
                                     displayName = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
                                 }
                             } catch (Exception e) {
-                                System.out.println(" IMAGE EXCEPTION " + e.toString());
+                                //System.out.println(" IMAGE EXCEPTION " + e.toString());
                             } finally {
                                 cursor.close();
                             }
@@ -412,7 +414,7 @@ public class AgentProfileDetailsFragment extends BaseFragment implements AllInte
                                 imageUri.add(0, fileUri);
 
                                 String filename = getRealPathFromUri(getActivity(), fileUri).substring(path.lastIndexOf("/") + 1);
-                                System.out.println("filename: "+filename);
+                                //System.out.println("filename: "+filename);
                                 try {
 
                                     JSONObject file = new JSONObject();
@@ -475,7 +477,7 @@ public class AgentProfileDetailsFragment extends BaseFragment implements AllInte
                     new String[]{Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE},
                     Config.MY_PERMISSIONS_REQUEST_CAMERA);
         } else {
-            System.out.println(" SELECTE DURI ");
+            //System.out.println(" SELECTE DURI ");
             setUI(view);
         }
     }

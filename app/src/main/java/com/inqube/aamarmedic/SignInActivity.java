@@ -47,8 +47,8 @@ public class SignInActivity extends BaseActivityWithoutMenu
     protected void setUI() {
         super.setUI();
 
-        pb_loader = (ProgressBar) findViewById(R.id.pb_loader);
-        col_holder = (CoordinatorLayout) findViewById(R.id.col_holder);
+        pb_loader =  findViewById(R.id.pb_loader);
+        col_holder =  findViewById(R.id.col_holder);
 
         edt_user =(EditText) findViewById(R.id.edt_user);
         edt_psw =(EditText)findViewById(R.id.edt_psw);
@@ -59,9 +59,7 @@ public class SignInActivity extends BaseActivityWithoutMenu
         btn_login.setOnClickListener(this);
         tv_forgotpsw.setOnClickListener(this);
 
-        if (isDeviceOnline()) {
-
-        } else {
+        if (!isDeviceOnline()) {
             createSnackBar(col_holder, getString(R.string.sorry_you_not_online_msg), new SnackBarClickAction());
         }
     }
@@ -113,9 +111,9 @@ public class SignInActivity extends BaseActivityWithoutMenu
             saveUserPreference(Config.AUTH_TOKEN,res.body().getToken());
             saveUserPreference(Config.USER_NAME, res.body().getResult().getUsername());
 
-            System.out.println("Language Id:"+res.body().getResult().getLanguageId());
+           /* System.out.println("Language Id:"+res.body().getResult().getLanguageId());
             System.out.println("Agent Id:"+res.body().getResult().get_id());
-            System.out.println("token:"+res.body().getToken());
+            System.out.println("token:"+res.body().getToken());*/
 
             startActivity(new Intent(SignInActivity.this, AgentDashboardMainFragmentActivity.class));
             finish();
