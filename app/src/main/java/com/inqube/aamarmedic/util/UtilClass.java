@@ -555,12 +555,12 @@ public class UtilClass {
 
     //>>>>>>>>>>> Doctor List by Name <<<<<<<<<<<<
     public void getDoctorListbByNameData(final BaseActivity activity,
-                                  final AllInterfaces.RetrofitResponseToActivityOrFrament retRes, String doc, String token) {
+                                  final AllInterfaces.RetrofitResponseToActivityOrFrament retRes, String doc, String token, String lang_id) {
 
         activity.disableScreen();
         System.out.println("SERVICE Response Code::");
         APIService service = ApiClient.getClient().create(APIService.class);
-        Call<com.inqube.aamarmedic.model.doctorlistbyname.MSG> userCall = service.getDoctorlistbyname(doc, token);
+        Call<com.inqube.aamarmedic.model.doctorlistbyname.MSG> userCall = service.getDoctorlistbyname(doc, token, lang_id);
         userCall.enqueue(new Callback<com.inqube.aamarmedic.model.doctorlistbyname.MSG>() {
             @Override
             public void onResponse(Call<com.inqube.aamarmedic.model.doctorlistbyname.MSG> call, Response<com.inqube.aamarmedic.model.doctorlistbyname.MSG> response) {

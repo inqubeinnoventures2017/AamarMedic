@@ -29,7 +29,7 @@ public class AgentBookingListDetailsDialogBox extends Dialog implements
 
     private Activity activity;
     private AllInterfaces.DialogCallback dialogCallback;
-    private List<Result> list_items = new ArrayList<Result>();
+    private List<Result> list_items;
     private String type;
     private TextView tv_patient_name, tv_patient_address,tv_patient_Mbno,tv_doc_name,tv_doctors_spec,tv_clinic_name,
             tv_doctor_time,tv_date_of_appointment,tv_registered_on,tv_remark;
@@ -52,12 +52,14 @@ public class AgentBookingListDetailsDialogBox extends Dialog implements
         setContentView(R.layout.agentbooking_list_cell_dtls);
 
         Window window = getWindow();
-        WindowManager.LayoutParams attributesParams = window.getAttributes();
-        attributesParams.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
-        attributesParams.dimAmount = 0.5f;
-        window.setAttributes(attributesParams);
-
-        getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        if (window!=null)
+        {
+            WindowManager.LayoutParams attributesParams = window.getAttributes();
+            attributesParams.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
+            attributesParams.dimAmount = 0.5f;
+            window.setAttributes(attributesParams);
+            getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        }
 
         tv_patient_name = findViewById(R.id.tv_patient_name);
         tv_patient_address = findViewById(R.id.tv_patient_address);
@@ -87,11 +89,13 @@ public class AgentBookingListDetailsDialogBox extends Dialog implements
             {
                 tv_doc_name.setText(list_items.get(position).getDoctorSchedule().getDoctorId().getFirstName());
                 if (list_items.get(position).getDoctorSchedule().getDoctorId().getLastName()!=null) {
-                    tv_doc_name.setText(list_items.get(position).getDoctorSchedule().getDoctorId().getFirstName()+" "
-                            + list_items.get(position).getDoctorSchedule().getDoctorId().getLastName());
+                    String doctorName = list_items.get(position).getDoctorSchedule().getDoctorId().getFirstName()+" "
+                            + list_items.get(position).getDoctorSchedule().getDoctorId().getLastName();
+                    tv_doc_name.setText(doctorName);
                 }
             }
 
+            System.out.println("SpecializationName:"+list_items.get(position).getDoctorSchedule().getDoctorId().getSpecializationId().getSpecializationName());
             if (list_items.get(position).getDoctorSchedule().getDoctorId().getSpecializationId()!=null)
             {
                 tv_doctors_spec.setText(list_items.get(position).getDoctorSchedule().getDoctorId().getSpecializationId().getSpecializationName());
@@ -104,7 +108,8 @@ public class AgentBookingListDetailsDialogBox extends Dialog implements
 
             if (list_items.get(position).getDoctorSchedule().getStartTime()!=null && list_items.get(position).getDoctorSchedule().getEndTime()!=null)
             {
-                tv_doctor_time.setText(list_items.get(position).getDoctorSchedule().getStartTime() + " - " + list_items.get(position).getDoctorSchedule().getEndTime());
+                String doctorSchedule = list_items.get(position).getDoctorSchedule().getStartTime() + " - " + list_items.get(position).getDoctorSchedule().getEndTime();
+                tv_doctor_time.setText(doctorSchedule);
             }
 
             if (list_items.get(position).getDoctorSchedule().getDay()!=null)
@@ -118,8 +123,11 @@ public class AgentBookingListDetailsDialogBox extends Dialog implements
                 SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd yyyy HH:mm:ss zzz");
                 Date date = sdf.parse(time);
                 sdf=new SimpleDateFormat("EEE dd/MM/yyyy HH:mm");
-                String registeredOn=sdf.format(date.getTime());
-                tv_registered_on.setText(registeredOn);
+                if (date!=null)
+                {
+                    String registeredOn=sdf.format(date.getTime());
+                    tv_registered_on.setText(registeredOn);
+                }
             }
             catch (ParseException ex)
             {
@@ -144,6 +152,8 @@ public class AgentBookingListDetailsDialogBox extends Dialog implements
         switch (view.getId()) {
             case R.id.btn_view_details_ok:
                 AgentBookingListDetailsDialogBox.this.dismiss();
+                break;
+            default:
                 break;
         }
     }

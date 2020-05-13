@@ -25,6 +25,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.Gson;
 import com.inqube.aamarmedic.AgentDashboardMainFragmentActivity;
 import com.inqube.aamarmedic.R;
@@ -65,7 +67,7 @@ public class AgentProfileDetailsFragment extends BaseFragment implements AllInte
     private ProgressBar pb_loader;
     private String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+", SelectedLanguageId;
     private Uri fileUri;
-    ArrayList<BaseModelClass> al_dialog_list;
+    private ArrayList<BaseModelClass> al_dialog_list;
     Locale myLocale;
     private List<com.inqube.aamarmedic.model.agentprofiledetails.Result> listProfile;
     private List<com.inqube.aamarmedic.model.languagelist.Result> listLang;
@@ -86,7 +88,7 @@ public class AgentProfileDetailsFragment extends BaseFragment implements AllInte
     public void onResume() {
         super.onResume();
         if (!resume) {
-            ((BaseActivity)getActivity()).pb_loader = (ProgressBar) view.findViewById(R.id.pb_loader);
+            pb_loader = view.findViewById(R.id.pb_loader);
             requestPermission();
             setUI(view);
         }
@@ -94,25 +96,25 @@ public class AgentProfileDetailsFragment extends BaseFragment implements AllInte
     }
 
     private void setUI(View view) {
-        imv_user_pic = (ImageView)view.findViewById(R.id.imv_user_pic);
-        imv_user_img= (ImageView)view.findViewById(R.id.imv_user_img);
+        imv_user_pic = view.findViewById(R.id.imv_user_pic);
+        imv_user_img= view.findViewById(R.id.imv_user_img);
 
-        edt_name = (EditText)view.findViewById(R.id.edt_name);
-        edt_mobileno = (EditText)view.findViewById(R.id.edt_mobileno);
-        edt_emailid = (EditText)view.findViewById(R.id.edt_emailid);
-        tv_lang = (TextView)view.findViewById(R.id.tv_language);
+        edt_name = view.findViewById(R.id.edt_name);
+        edt_mobileno = view.findViewById(R.id.edt_mobileno);
+        edt_emailid = view.findViewById(R.id.edt_emailid);
+        tv_lang = view.findViewById(R.id.tv_language);
 
-        btnSubmit = (Button)view.findViewById(R.id.btnSubmit);
+        btnSubmit = view.findViewById(R.id.btnSubmit);
 
-        pb_loader = (ProgressBar)view.findViewById(R.id.pb_loader);
+        pb_loader = view.findViewById(R.id.pb_loader);
 
-        imv_menu = (ImageView)((BaseActivity)getActivity()).findViewById(R.id.imv_menu);
+        imv_menu =  getActivity().findViewById(R.id.imv_menu);
         imv_menu.setVisibility(View.GONE);
 
-        imv_home = (ImageView)((BaseActivity)getActivity()).findViewById(R.id.imv_home);
+        imv_home = getActivity().findViewById(R.id.imv_home);
         imv_home.setVisibility(View.VISIBLE);
 
-        tv_menu_title = (TextView)((BaseActivity)getActivity()).findViewById(R.id.tv_menu_title);
+        tv_menu_title = getActivity().findViewById(R.id.tv_menu_title);
         tv_menu_title.setText(getString(R.string.agent_profile));
 
         imv_home.setOnClickListener(this);
@@ -256,15 +258,18 @@ public class AgentProfileDetailsFragment extends BaseFragment implements AllInte
             Response<com.inqube.aamarmedic.model.agentprofiledetails.MSG> res = (Response<com.inqube.aamarmedic.model.agentprofiledetails.MSG>) response;
             Gson gson = new Gson();
             String json = gson.toJson(res.body());
-            listProfile = res.body().getResult();
-            if (listProfile.size()>0)
+            if (res.body()!=null)
             {
-                edt_name.setText(""+listProfile.get(0).getName());
-                edt_mobileno.setText(""+listProfile.get(0).getMobile());
-                edt_emailid.setText(""+listProfile.get(0).getEmail());
-                if (listProfile.get(0).getLanguageId()!=null)
+                listProfile = res.body().getResult();
+                if (listProfile.size()>0)
                 {
-                    tv_lang.setText(""+listProfile.get(0).getLanguageId().getLanguageName());
+                    edt_name.setText(listProfile.get(0).getName());
+                    edt_mobileno.setText(listProfile.get(0).getMobile());
+                    edt_emailid.setText(listProfile.get(0).getEmail());
+                    if (listProfile.get(0).getLanguageId()!=null)
+                    {
+                        tv_lang.setText(listProfile.get(0).getLanguageId().getLanguageName());
+                    }
                 }
             }
         }
@@ -379,7 +384,7 @@ public class AgentProfileDetailsFragment extends BaseFragment implements AllInte
                         if (uriString.contains("content://")) {
 
                             //.out.println(" URI STRING " + uriString);
-                            File myFile = null;
+                            File myFile;
                             String displayName = null;
                             fileUri = Uri.parse(uriString);
                             //System.out.println("fileUri:"+fileUri);
@@ -448,6 +453,9 @@ public class AgentProfileDetailsFragment extends BaseFragment implements AllInte
                         }
                     }
                 }
+                break;
+            default:
+                break;
         }
     }
 
@@ -483,7 +491,7 @@ public class AgentProfileDetailsFragment extends BaseFragment implements AllInte
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    public void onRequestPermissionsResult(@NonNull int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == Config.MY_PERMISSIONS_REQUEST_CAMERA && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             setUI(view);
         } else {

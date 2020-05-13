@@ -1,7 +1,6 @@
 
 package com.inqube.aamarmedic.model.doctorlistbyname;
 
-import java.util.List;
 import javax.annotation.Generated;
 import com.google.gson.annotations.SerializedName;
 
@@ -12,7 +11,7 @@ public class MSG {
     @SerializedName("message")
     private String mMessage;
     @SerializedName("result")
-    private List<Result> mResult;
+    private Result mResult;
     @SerializedName("status")
     private Long mStatus;
     @SerializedName("success")
@@ -26,11 +25,11 @@ public class MSG {
         mMessage = message;
     }
 
-    public List<Result> getResult() {
+    public Result getResult() {
         return mResult;
     }
 
-    public void setResult(List<Result> result) {
+    public void setResult(Result result) {
         mResult = result;
     }
 

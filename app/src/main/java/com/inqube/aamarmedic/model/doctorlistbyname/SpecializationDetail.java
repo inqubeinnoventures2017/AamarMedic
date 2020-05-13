@@ -6,14 +6,12 @@ import com.google.gson.annotations.SerializedName;
 
 @Generated("net.hexar.json2pojo")
 @SuppressWarnings("unused")
-public class SpecializationId {
+public class SpecializationDetail {
 
-    @SerializedName("created_at")
-    private String mCreatedAt;
-    @SerializedName("is_blocked")
-    private Long mIsBlocked;
-    @SerializedName("is_deleted")
-    private Long mIsDeleted;
+    @SerializedName("language_id")
+    private String mLanguageId;
+    @SerializedName("specialization_id")
+    private String mSpecializationId;
     @SerializedName("specialization_name")
     private String mSpecializationName;
     @SerializedName("__v")
@@ -21,28 +19,20 @@ public class SpecializationId {
     @SerializedName("_id")
     private String m_id;
 
-    public String getCreatedAt() {
-        return mCreatedAt;
+    public String getLanguageId() {
+        return mLanguageId;
     }
 
-    public void setCreatedAt(String createdAt) {
-        mCreatedAt = createdAt;
+    public void setLanguageId(String languageId) {
+        mLanguageId = languageId;
     }
 
-    public Long getIsBlocked() {
-        return mIsBlocked;
+    public String getSpecializationId() {
+        return mSpecializationId;
     }
 
-    public void setIsBlocked(Long isBlocked) {
-        mIsBlocked = isBlocked;
-    }
-
-    public Long getIsDeleted() {
-        return mIsDeleted;
-    }
-
-    public void setIsDeleted(Long isDeleted) {
-        mIsDeleted = isDeleted;
+    public void setSpecializationId(String specializationId) {
+        mSpecializationId = specializationId;
     }
 
     public String getSpecializationName() {

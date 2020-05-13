@@ -38,6 +38,7 @@ import com.inqube.aamarmedic.dialog.DoctorListByNameDialogBox;
 import com.inqube.aamarmedic.dialog.StateDailog;
 import com.inqube.aamarmedic.model.baseModel.BaseModelClass;
 import com.inqube.aamarmedic.model.doctorlistbyname.MSG;
+import com.inqube.aamarmedic.model.doctorlistbyname.Result;
 import com.inqube.aamarmedic.model.specializationlist.Spec;
 import com.inqube.aamarmedic.telehealthfragment.PersonalFragment;
 import com.inqube.aamarmedic.util.AllInterfaces;
@@ -69,7 +70,7 @@ public class DoctorAppointmentFragment extends BaseFragment implements AllInterf
     private List<com.inqube.aamarmedic.model.clinic.Result> listClinic;
     private List<com.inqube.aamarmedic.model.daylist.Result> listDay;
     private List<com.inqube.aamarmedic.model.doctorlist.Result> listDoctor;
-    private List<com.inqube.aamarmedic.model.doctorlistbyname.Result> listDoctorbyname;
+    private List<com.inqube.aamarmedic.model.doctorlistbyname.Doc> listDoctorbyname;
     private List<com.inqube.aamarmedic.model.districtlist.District> listDistrict;
     private List<com.inqube.aamarmedic.model.citylist.City> listCity;
     private List<com.inqube.aamarmedic.model.appointment.Result> listAppointment;
@@ -116,43 +117,43 @@ public class DoctorAppointmentFragment extends BaseFragment implements AllInterf
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void setUI(View view) throws ParseException {
 
-        tv_menu_title = (TextView)((BaseActivity)getActivity()).findViewById(R.id.tv_menu_title);
+        tv_menu_title = getActivity().findViewById(R.id.tv_menu_title);
         tv_menu_title.setText(getString(R.string.find_doctor));
 
-        edt_search = (EditText) view.findViewById(R.id.edt_search);
+        edt_search =  view.findViewById(R.id.edt_search);
 
-        imv_doc = (ImageView) view.findViewById(R.id.imv_doc);
+        imv_doc = view.findViewById(R.id.imv_doc);
 
-        tv_specialization = (TextView) view.findViewById(R.id.tv_specialization);
-        tv_clinic = (TextView) view.findViewById(R.id.tv_clinic);
-        tv_day = (TextView) view.findViewById(R.id.tv_day);
+        tv_specialization = view.findViewById(R.id.tv_specialization);
+        tv_clinic = view.findViewById(R.id.tv_clinic);
+        tv_day = view.findViewById(R.id.tv_day);
 
-        tv_doctor_name = (TextView) view.findViewById(R.id.tv_doctor_name);
-        tv_doctor_degree = (TextView) view.findViewById(R.id.tv_doctor_degree);
-        tv_doctor_specialist = (TextView) view.findViewById(R.id.tv_doctor_specialist);
-        tv_hospital = (TextView) view.findViewById(R.id.tv_doctor_hospitalname);
-        tv_hospital_addr = (TextView) view.findViewById(R.id.tv_hospital_addr);
-        tv_doctor_time = (TextView) view.findViewById(R.id.tv_doctor_time);
+        tv_doctor_name = view.findViewById(R.id.tv_doctor_name);
+        tv_doctor_degree = view.findViewById(R.id.tv_doctor_degree);
+        tv_doctor_specialist = view.findViewById(R.id.tv_doctor_specialist);
+        tv_hospital = view.findViewById(R.id.tv_doctor_hospitalname);
+        tv_hospital_addr = view.findViewById(R.id.tv_hospital_addr);
+        tv_doctor_time = view.findViewById(R.id.tv_doctor_time);
 
-        edt_patientname = (EditText) view.findViewById(R.id.edt_patientname);
-        edt_mobileno = (EditText) view.findViewById(R.id.edt_mobileno);
-        edt_address = (EditText) view.findViewById(R.id.edt_address);
-        edt_pinno = (EditText) view.findViewById(R.id.edt_pinno);
-        tv_district = (TextView) view.findViewById(R.id.tv_district);
-        tv_city = (TextView) view.findViewById(R.id.tv_city);
-        edt_remarks = (EditText) view.findViewById(R.id.edt_remarks);
+        edt_patientname = view.findViewById(R.id.edt_patientname);
+        edt_mobileno = view.findViewById(R.id.edt_mobileno);
+        edt_address =  view.findViewById(R.id.edt_address);
+        edt_pinno = view.findViewById(R.id.edt_pinno);
+        tv_district = view.findViewById(R.id.tv_district);
+        tv_city = view.findViewById(R.id.tv_city);
+        edt_remarks = view.findViewById(R.id.edt_remarks);
         //tvAppointmentDate= (TextView)view.findViewById(R.id.tvAppointmentDate);
 
-        btnShowDoctor = (Button) view.findViewById(R.id.btnShowDoctors);
-        btnSubmit = (Button) view.findViewById(R.id.btnSubmit);
+        btnShowDoctor = view.findViewById(R.id.btnShowDoctors);
+        btnSubmit = view.findViewById(R.id.btnSubmit);
 
-        ll_doctor_info = (LinearLayout) view.findViewById(R.id.ll_doctor_info);
+        ll_doctor_info = view.findViewById(R.id.ll_doctor_info);
         ll_doctor_info.setVisibility(View.GONE);
 
-        imv_home = (ImageView) ((BaseActivity) getActivity()).findViewById(R.id.imv_home);
+        imv_home = getActivity().findViewById(R.id.imv_home);
         imv_home.setVisibility(View.VISIBLE);
 
-        imv_menu = (ImageView) ((BaseActivity) getActivity()).findViewById(R.id.imv_menu);
+        imv_menu = getActivity().findViewById(R.id.imv_menu);
         imv_menu.setVisibility(View.GONE);
 
         edt_search.setOnClickListener(this);
@@ -185,8 +186,12 @@ public class DoctorAppointmentFragment extends BaseFragment implements AllInterf
                             tv_clinic.setText("");
                             tv_day.setText("");
 
+                            System.out.println("Token:"+((BaseActivity) getActivity()).getUserPreference(Config.AUTH_TOKEN, ""));
+                            System.out.println("LanguageId:"+((BaseActivity) getActivity()).getUserPreference(Config.LANGUAGE_ID, ""));
+
                             UtilClass.getInstance().getDoctorListbByNameData(((BaseActivity) getActivity()), DoctorAppointmentFragment.this,
-                                    edt_search.getText().toString(), ((BaseActivity) getActivity()).getUserPreference(Config.AUTH_TOKEN, ""));
+                                    edt_search.getText().toString(), ((BaseActivity) getActivity()).getUserPreference(Config.AUTH_TOKEN, ""),
+                                    ((BaseActivity) getActivity()).getUserPreference(Config.LANGUAGE_ID, ""));
                         } else {
                             mListener.onAamarMedicDoctorAppointmentFragmentInteractionListener(getString(R.string.sorry_you_not_online_msg));
                             return false;
@@ -221,7 +226,8 @@ public class DoctorAppointmentFragment extends BaseFragment implements AllInterf
                                 tv_day.setText("");
 
                                 UtilClass.getInstance().getDoctorListbByNameData(((BaseActivity) getActivity()), DoctorAppointmentFragment.this,
-                                        edt_search.getText().toString(), ((BaseActivity) getActivity()).getUserPreference(Config.AUTH_TOKEN, ""));
+                                        edt_search.getText().toString(), ((BaseActivity) getActivity()).getUserPreference(Config.AUTH_TOKEN, ""),
+                                        ((BaseActivity) getActivity()).getUserPreference(Config.LANGUAGE_ID, ""));
                             } else {
                                 mListener.onAamarMedicDoctorAppointmentFragmentInteractionListener(getString(R.string.sorry_you_not_online_msg));
                             }
@@ -510,16 +516,17 @@ public class DoctorAppointmentFragment extends BaseFragment implements AllInterf
             }
             //System.out.println("DoctorId:"+listDoctor.get(Integer.parseInt(str[0])).get_id());
         } else if (str[1].equalsIgnoreCase(Config.DOCTOR_LIST_BY_NAME)) {
-            ((BaseActivity) getActivity()).saveDataPreference(Config.DOCTOR_ID, listDoctorbyname.get(Integer.parseInt(str[0])).get_id());
-            tv_doctor_name.setText("" + listDoctorbyname.get(Integer.parseInt(str[0])).getDoctorId().getFirstName() + " " + listDoctorbyname.get(Integer.parseInt(str[0])).getDoctorId().getLastName());
-            tv_doctor_degree.setText("" + listDoctorbyname.get(Integer.parseInt(str[0])).getDoctorId().getDegree());
-            tv_doctor_specialist.setText(" " + listDoctorbyname.get(Integer.parseInt(str[0])).getDoctorId().getSpecializationId().getSpecializationName());
-            tv_hospital.setText("" + listDoctorbyname.get(Integer.parseInt(str[0])).getClinicId().getClinicName());
-            tv_hospital_addr.setText("" + listDoctorbyname.get(Integer.parseInt(str[0])).getClinicId().getAddress());
+            ((BaseActivity) getActivity()).saveDataPreference(Config.DOCTOR_ID, listDoctorbyname.get(Integer.parseInt(str[0])).getDoctorInfo().get_id());
+            tv_doctor_name.setText("" + listDoctorbyname.get(Integer.parseInt(str[0])).getDoctorInfo().getFirstName()+ " "
+                    + listDoctorbyname.get(Integer.parseInt(str[0])).getDoctorInfo().getLastName());
+            tv_doctor_degree.setText("" + listDoctorbyname.get(Integer.parseInt(str[0])).getDoctorInfo().getDegree());
+            tv_doctor_specialist.setText(" " + listDoctorbyname.get(Integer.parseInt(str[0])).getDoctorInfo().getSpecializationInfo().getSpecializationDetails().get(0).getSpecializationName());
+            tv_hospital.setText("" + listDoctorbyname.get(Integer.parseInt(str[0])).getClinicInfo().getClinicName());
+            tv_hospital_addr.setText("" + listDoctorbyname.get(Integer.parseInt(str[0])).getClinicInfo().getAddress());
             tv_doctor_time.setText("" + listDoctorbyname.get(Integer.parseInt(str[0])).getDay() + " " + listDoctorbyname.get(Integer.parseInt(str[0])).getStartTime() + " - "
                     + listDoctorbyname.get(Integer.parseInt(str[0])).getEndTime());
-            if (listDoctorbyname.get(Integer.parseInt(str[0])).getDoctorId().getImageUrl().length() > 0) {
-                Picasso.get().load(listDoctorbyname.get(Integer.parseInt(str[0])).getDoctorId().getImageUrl()).into(imv_doc);
+            if (listDoctorbyname.get(Integer.parseInt(str[0])).getDoctorInfo().getImageUrl().length() > 0) {
+                Picasso.get().load(listDoctorbyname.get(Integer.parseInt(str[0])).getDoctorInfo().getImageUrl()).into(imv_doc);
             } else {
                 imv_doc.setImageResource(R.drawable.dr_placeholder);
             }
@@ -583,7 +590,7 @@ public class DoctorAppointmentFragment extends BaseFragment implements AllInterf
             Response<MSG> res = (Response<com.inqube.aamarmedic.model.doctorlistbyname.MSG>) response;
             Gson gson = new Gson();
             String json = gson.toJson(res.body());
-            listDoctorbyname = res.body().getResult();
+            listDoctorbyname = res.body().getResult().getDoc();
             if (listDoctorbyname.size() > 0) {
                 DoctorListByNameDialogBox d = new DoctorListByNameDialogBox(((BaseActivity) getActivity()), listDoctorbyname, this, Config.DOCTOR_LIST_BY_NAME);
                 d.show();

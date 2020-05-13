@@ -36,7 +36,7 @@ public interface APIService {
 
     @GET("user/list/doctor?")
     Call<com.inqube.aamarmedic.model.doctorlistbyname.MSG>getDoctorlistbyname(@Query("doc") String doc,
-                                                                  @Query("token") String token);
+                                                                  @Query("token") String token, @Query("lang_id") String lang_id);
 
     @GET("user/district_list")
     Call<com.inqube.aamarmedic.model.districtlist.MSG> getDistrictList(@Query("token") String token);

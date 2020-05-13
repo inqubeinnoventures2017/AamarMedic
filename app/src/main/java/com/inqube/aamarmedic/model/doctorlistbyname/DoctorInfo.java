@@ -1,17 +1,13 @@
 
 package com.inqube.aamarmedic.model.doctorlistbyname;
 
-import android.net.Uri;
-
 import javax.annotation.Generated;
 import com.google.gson.annotations.SerializedName;
 
 @Generated("net.hexar.json2pojo")
 @SuppressWarnings("unused")
-public class DoctorId {
+public class DoctorInfo {
 
-    @SerializedName("created_at")
-    private String mCreatedAt;
     @SerializedName("degree")
     private String mDegree;
     @SerializedName("email")
@@ -22,28 +18,14 @@ public class DoctorId {
     private String mImageName;
     @SerializedName("image_url")
     private String mImageUrl;
-    @SerializedName("is_blocked")
-    private Long mIsBlocked;
-    @SerializedName("is_deleted")
-    private Long mIsDeleted;
     @SerializedName("last_name")
     private String mLastName;
     @SerializedName("mobile_no")
     private String mMobileNo;
-    @SerializedName("specializationId")
-    private SpecializationId mSpecializationId;
-    @SerializedName("__v")
-    private Long m_V;
+    @SerializedName("specialization_info")
+    private SpecializationInfo mSpecializationInfo;
     @SerializedName("_id")
     private String m_id;
-
-    public String getCreatedAt() {
-        return mCreatedAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        mCreatedAt = createdAt;
-    }
 
     public String getDegree() {
         return mDegree;
@@ -85,22 +67,6 @@ public class DoctorId {
         mImageUrl = imageUrl;
     }
 
-    public Long getIsBlocked() {
-        return mIsBlocked;
-    }
-
-    public void setIsBlocked(Long isBlocked) {
-        mIsBlocked = isBlocked;
-    }
-
-    public Long getIsDeleted() {
-        return mIsDeleted;
-    }
-
-    public void setIsDeleted(Long isDeleted) {
-        mIsDeleted = isDeleted;
-    }
-
     public String getLastName() {
         return mLastName;
     }
@@ -117,20 +83,12 @@ public class DoctorId {
         mMobileNo = mobileNo;
     }
 
-    public SpecializationId getSpecializationId() {
-        return mSpecializationId;
+    public SpecializationInfo getSpecializationInfo() {
+        return mSpecializationInfo;
     }
 
-    public void setSpecializationId(SpecializationId specializationId) {
-        mSpecializationId = specializationId;
-    }
-
-    public Long get_V() {
-        return m_V;
-    }
-
-    public void set_V(Long _V) {
-        m_V = _V;
+    public void setSpecializationInfo(SpecializationInfo specializationInfo) {
+        mSpecializationInfo = specializationInfo;
     }
 
     public String get_id() {

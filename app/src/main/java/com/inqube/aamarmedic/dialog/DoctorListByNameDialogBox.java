@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.inqube.aamarmedic.R;
 import com.inqube.aamarmedic.adapter.SelectDoctorListByNameDialogBoxAdapter;
+import com.inqube.aamarmedic.model.doctorlistbyname.Doc;
 import com.inqube.aamarmedic.model.doctorlistbyname.Result;
 import com.inqube.aamarmedic.util.AllInterfaces;
 
@@ -25,11 +26,11 @@ public class DoctorListByNameDialogBox extends Dialog implements
     private RecyclerView rv_doctorlist;
     private RecyclerView.Adapter adapter;
     private AllInterfaces.DialogCallback dialogCallback;
-    private List<com.inqube.aamarmedic.model.doctorlistbyname.Result> list_items = new ArrayList<com.inqube.aamarmedic.model.doctorlistbyname.Result>();
+    private List<com.inqube.aamarmedic.model.doctorlistbyname.Doc> list_items;
     private RecyclerView.LayoutManager layoutManager;
     private String type;
 
-    public DoctorListByNameDialogBox(Activity activity, List<Result> list_items, AllInterfaces.DialogCallback dialogCallback, String type){
+    public DoctorListByNameDialogBox(Activity activity, List<Doc> list_items, AllInterfaces.DialogCallback dialogCallback, String type){
         super(activity);
         this.activity=activity;
         this.list_items =list_items;
@@ -44,14 +45,16 @@ public class DoctorListByNameDialogBox extends Dialog implements
         setContentView(R.layout.doctor_list);
 
         Window window = getWindow();
-        WindowManager.LayoutParams attributesParams = window.getAttributes();
-        attributesParams.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
-        attributesParams.dimAmount = 0.5f;
-        window.setAttributes(attributesParams);
+        if (window!=null)
+        {
+            WindowManager.LayoutParams attributesParams = window.getAttributes();
+            attributesParams.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
+            attributesParams.dimAmount = 0.5f;
+            window.setAttributes(attributesParams);
+            getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        }
 
-        getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
-        rv_doctorlist = (RecyclerView) findViewById(R.id.rv_doctorlist);
+        rv_doctorlist = findViewById(R.id.rv_doctorlist);
         layoutManager = new LinearLayoutManager(activity);
         rv_doctorlist.setLayoutManager(layoutManager);
         rv_doctorlist.setHasFixedSize(true);

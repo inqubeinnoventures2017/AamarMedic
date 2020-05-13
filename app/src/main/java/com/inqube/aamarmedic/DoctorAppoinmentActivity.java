@@ -46,7 +46,7 @@ public class DoctorAppoinmentActivity extends BaseActivityWithoutMenu
     private List<com.inqube.aamarmedic.model.clinic.Result> listClinic;
     private List<com.inqube.aamarmedic.model.daylist.Result> listDay;
     private List<com.inqube.aamarmedic.model.doctorlist.Result> listDoctor;
-    private List<com.inqube.aamarmedic.model.doctorlistbyname.Result> listDoctorbyname;
+    private List<com.inqube.aamarmedic.model.doctorlistbyname.Doc> listDoctorbyname;
     private List<com.inqube.aamarmedic.model.districtlist.District> listDistrict;
     private List<com.inqube.aamarmedic.model.citylist.City> listCity;
     private List<com.inqube.aamarmedic.model.appointment.Result> listAppointment;
@@ -70,34 +70,34 @@ public class DoctorAppoinmentActivity extends BaseActivityWithoutMenu
     protected void setUI() {
         super.setUI();
 
-        pb_loader = (ProgressBar) findViewById(R.id.pb_loader);
-        col_holder = (CoordinatorLayout) findViewById(R.id.col_holder);
+        pb_loader =  findViewById(R.id.pb_loader);
+        col_holder =  findViewById(R.id.col_holder);
 
-        edt_search = (EditText)findViewById(R.id.edt_search);
+        edt_search = findViewById(R.id.edt_search);
 
-        tv_specialization =(TextView)findViewById(R.id.tv_specialization);
-        tv_clinic = (TextView)findViewById(R.id.tv_clinic);
-        tv_day = (TextView)findViewById(R.id.tv_day);
+        tv_specialization =findViewById(R.id.tv_specialization);
+        tv_clinic = findViewById(R.id.tv_clinic);
+        tv_day = findViewById(R.id.tv_day);
 
-        tv_doctor_name = (TextView)findViewById(R.id.tv_doctor_name);
-        tv_doctor_degree = (TextView)findViewById(R.id.tv_doctor_degree);
-        tv_doctor_specialist = (TextView)findViewById(R.id.tv_doctor_specialist);
-        tv_hospital = (TextView)findViewById(R.id.tv_doctor_hospitalname);
-        tv_hospital_addr = (TextView)findViewById(R.id.tv_hospital_addr);
-        tv_doctor_time = (TextView)findViewById(R.id.tv_doctor_time);
+        tv_doctor_name = findViewById(R.id.tv_doctor_name);
+        tv_doctor_degree = findViewById(R.id.tv_doctor_degree);
+        tv_doctor_specialist = findViewById(R.id.tv_doctor_specialist);
+        tv_hospital = findViewById(R.id.tv_doctor_hospitalname);
+        tv_hospital_addr = findViewById(R.id.tv_hospital_addr);
+        tv_doctor_time = findViewById(R.id.tv_doctor_time);
 
-        edt_patientname =(EditText)findViewById(R.id.edt_patientname);
-        edt_mobileno =(EditText)findViewById(R.id.edt_mobileno);
-        edt_address =(EditText)findViewById(R.id.edt_address);
-        edt_pinno =(EditText)findViewById(R.id.edt_pinno);
-        tv_district =(TextView)findViewById(R.id.tv_district);
-        tv_city =(TextView)findViewById(R.id.tv_city);
-        edt_remarks =(EditText)findViewById(R.id.edt_remarks);
+        edt_patientname =findViewById(R.id.edt_patientname);
+        edt_mobileno =findViewById(R.id.edt_mobileno);
+        edt_address =findViewById(R.id.edt_address);
+        edt_pinno =findViewById(R.id.edt_pinno);
+        tv_district =findViewById(R.id.tv_district);
+        tv_city =findViewById(R.id.tv_city);
+        edt_remarks =findViewById(R.id.edt_remarks);
 
-        btnShowDoctor=(Button)findViewById(R.id.btnShowDoctors);
-        btnSubmit=(Button)findViewById(R.id.btnSubmit);
+        btnShowDoctor=findViewById(R.id.btnShowDoctors);
+        btnSubmit=findViewById(R.id.btnSubmit);
 
-        ll_doctor_info = (LinearLayout)findViewById(R.id.ll_doctor_info);
+        ll_doctor_info = findViewById(R.id.ll_doctor_info);
         ll_doctor_info.setVisibility(View.GONE);
 
         edt_search.setOnClickListener(this);
@@ -176,9 +176,7 @@ public class DoctorAppoinmentActivity extends BaseActivityWithoutMenu
                         System.out.println("token:" + getUserPreference(Config.AUTH_TOKEN,""));
                         System.out.println("Specialization:" + selectedSpecializationId);
 
-                        if (isDeviceOnline()) {
-                            //API Calling
-                        }else {
+                        if (!isDeviceOnline()) {
                             createSnackBar(col_holder, getString(R.string.sorry_you_not_online_msg));
                             /*UtilClass.getInstance().getClinicData(DoctorAppoinmentActivity.this, DoctorAppoinmentActivity.this,
                                     selectedSpecializationId, getUserPreference(Config.AUTH_TOKEN, ""));*/
@@ -235,23 +233,14 @@ public class DoctorAppoinmentActivity extends BaseActivityWithoutMenu
                         //System.out.println("day:" + selectDay);
                         //System.out.println("token:" + getUserPreference(Config.AUTH_TOKEN,""));
 
-                        if (isDeviceOnline()) {
-                            /*UtilClass.getInstance().getDoctorListData(DoctorAppoinmentActivity.this, DoctorAppoinmentActivity.this,
-                                    selectedSpecializationId, selectedClinicId, selectDay, getUserPreference(Config.AUTH_TOKEN, ""));*/
-                        }
-                        else {
+                        if (!isDeviceOnline()) {
                             createSnackBar(col_holder, getString(R.string.sorry_you_not_online_msg));
-
                         }
                     }
                 break;
             case R.id.tv_district:
                 pb_loader.setVisibility(View.VISIBLE);
-                if (isDeviceOnline()) {
-                   /* UtilClass.getInstance().getDistrictData(DoctorAppoinmentActivity.this, DoctorAppoinmentActivity.this,
-                            getUserPreference(Config.AUTH_TOKEN, ""));*/
-                }
-                else {
+                if (!isDeviceOnline()) {
                     createSnackBar(col_holder, getString(R.string.sorry_you_not_online_msg));
                 }
                 break;
@@ -266,15 +255,8 @@ public class DoctorAppoinmentActivity extends BaseActivityWithoutMenu
                 }*/
                 break;
             case R.id.btnSubmit:
-                if (emptyCheckValidation()==false) {
-                    if (isDeviceOnline()) {
-                        //API Calling
-                        /*UtilClass.getInstance().getDoctorAppointmentData(DoctorAppoinmentActivity.this,DoctorAppoinmentActivity.this,
-                                getDataPreference(Config.DOCTOR_ID,""),edt_patientname.getText().toString(),edt_mobileno.getText().toString(),
-                                edt_address.getText().toString(),edt_pinno.getText().toString(),selectedDistrictId,selectedCityId,edt_remarks.getText().toString(),
-                                getUserPreference(Config.AUTH_TOKEN, ""));*/
-                    }
-                    else {
+                if (!emptyCheckValidation()) {
+                    if (!isDeviceOnline()) {
                         createSnackBar(col_holder, getString(R.string.sorry_you_not_online_msg));
                     }
                 }
@@ -324,25 +306,31 @@ public class DoctorAppoinmentActivity extends BaseActivityWithoutMenu
 
         if (str[1].equalsIgnoreCase(Config.DOCTOR_LIST)) {
             saveDataPreference(Config.DOCTOR_ID,listDoctor.get(Integer.parseInt(str[0])).get_id());
-            tv_doctor_name.setText(""+listDoctor.get(Integer.parseInt(str[0])).getDoctorInfo().getFirstName() + " " + listDoctor.get(Integer.parseInt(str[0])).getDoctorInfo().getLastName());
-            tv_doctor_degree.setText(""+listDoctor.get(Integer.parseInt(str[0])).getDoctorInfo().getDegree());
-            tv_doctor_specialist.setText(" " + listDoctor.get(Integer.parseInt(str[0])).getDoctorInfo().getSpecializationInfo().getSpecializationDetails().get(0).getSpecializationName());
-            tv_hospital.setText(""+listDoctor.get(Integer.parseInt(str[0])).getClinicInfo().getClinicName());
-            tv_hospital_addr.setText(""+listDoctor.get(Integer.parseInt(str[0])).getClinicInfo().getAddress());
-            tv_doctor_time.setText(""+listDoctor.get(Integer.parseInt(str[0])).getDay() + " " + listDoctor.get(Integer.parseInt(str[0])).getStartTime() + " - "
-                    +listDoctor.get(Integer.parseInt(str[0])).getEndTime());
+            String doctorName = listDoctor.get(Integer.parseInt(str[0])).getDoctorInfo().getFirstName() + " " + listDoctor.get(Integer.parseInt(str[0])).getDoctorInfo().getLastName();
+            tv_doctor_name.setText(doctorName);
+            tv_doctor_degree.setText(listDoctor.get(Integer.parseInt(str[0])).getDoctorInfo().getDegree());
+            tv_doctor_specialist.setText(listDoctor.get(Integer.parseInt(str[0])).getDoctorInfo().getSpecializationInfo().getSpecializationDetails().get(0).getSpecializationName());
+            tv_hospital.setText(listDoctor.get(Integer.parseInt(str[0])).getClinicInfo().getClinicName());
+            tv_hospital_addr.setText(listDoctor.get(Integer.parseInt(str[0])).getClinicInfo().getAddress());
+            String doctorTime = listDoctor.get(Integer.parseInt(str[0])).getDay() + " " + listDoctor.get(Integer.parseInt(str[0])).getStartTime() + " - "
+                    +listDoctor.get(Integer.parseInt(str[0])).getEndTime();
+            tv_doctor_time.setText(doctorName);
 
-            System.out.println("DoctorId:"+listDoctor.get(Integer.parseInt(str[0])).get_id());
+            //System.out.println("DoctorId:"+listDoctor.get(Integer.parseInt(str[0])).get_id());
         }else if (str[1].equalsIgnoreCase(Config.DOCTOR_LIST_BY_NAME)) {
-            saveDataPreference(Config.DOCTOR_ID,listDoctorbyname.get(Integer.parseInt(str[0])).get_id());
-            tv_doctor_name.setText(""+listDoctorbyname.get(Integer.parseInt(str[0])).getDoctorId().getFirstName() + " " + listDoctorbyname.get(Integer.parseInt(str[0])).getDoctorId().getLastName());
-            tv_doctor_degree.setText(""+listDoctorbyname.get(Integer.parseInt(str[0])).getDoctorId().getDegree());
-            tv_doctor_specialist.setText(" " + listDoctorbyname.get(Integer.parseInt(str[0])).getDoctorId().getSpecializationId().getSpecializationName());
-            tv_hospital.setText(""+listDoctorbyname.get(Integer.parseInt(str[0])).getClinicId().getClinicName());
-            tv_hospital_addr.setText(""+listDoctorbyname.get(Integer.parseInt(str[0])).getClinicId().getAddress());
-            tv_doctor_time.setText(""+listDoctorbyname.get(Integer.parseInt(str[0])).getDay() + " " + listDoctorbyname.get(Integer.parseInt(str[0])).getStartTime() + " - "
-                    +listDoctorbyname.get(Integer.parseInt(str[0])).getEndTime());
-            System.out.println("DoctorId"+listDoctorbyname.get(Integer.parseInt(str[0])).get_id());
+            saveDataPreference(Config.DOCTOR_ID,listDoctorbyname.get(Integer.parseInt(str[0])).getDoctorInfo().get_id());
+            String doctorName = listDoctorbyname.get(Integer.parseInt(str[0])).getDoctorInfo().getFirstName() + " " +
+                    listDoctorbyname.get(Integer.parseInt(str[0])).getDoctorInfo().getLastName();
+            tv_doctor_name.setText(doctorName);
+            tv_doctor_degree.setText(listDoctorbyname.get(Integer.parseInt(str[0])).getDoctorInfo().getDegree());
+            tv_doctor_specialist.setText(listDoctorbyname.get(Integer.parseInt(str[0])).getDoctorInfo().getSpecializationInfo().getSpecializationDetails().get(0).getSpecializationName());
+            tv_hospital.setText(listDoctorbyname.get(Integer.parseInt(str[0])).getClinicInfo().getClinicName());
+            tv_hospital_addr.setText(listDoctorbyname.get(Integer.parseInt(str[0])).getClinicInfo().getAddress());
+            String doctorTime = listDoctorbyname.get(Integer.parseInt(str[0])).getDay() + " "
+                    + listDoctorbyname.get(Integer.parseInt(str[0])).getStartTime() + " - "
+                    +listDoctorbyname.get(Integer.parseInt(str[0])).getEndTime();
+            tv_doctor_time.setText(doctorTime);
+            //System.out.println("DoctorId"+listDoctorbyname.get(Integer.parseInt(str[0])).getDoctorInfo().get_id());
         }
     }
 
@@ -351,9 +339,9 @@ public class DoctorAppoinmentActivity extends BaseActivityWithoutMenu
         String str[] = position.split("-");
         System.out.println("str[2]:"+str[2]);
         if (str[2].equalsIgnoreCase(Config.SPECIALIZATION)) {
-            String selectedSpecialization = listSpecialization.get(Integer.parseInt(str[1])).getSpecializationInfo().get(Integer.parseInt(str[1])).getSpecializationName();
+            String selectedSpecialization =" " + listSpecialization.get(Integer.parseInt(str[1])).getSpecializationInfo().get(Integer.parseInt(str[1])).getSpecializationName();
             selectedSpecializationId = ""+listSpecialization.get(Integer.parseInt(str[1])).getSpecializationInfo().get(Integer.parseInt(str[1])).get_id();
-            tv_specialization.setText(" "+selectedSpecialization);
+            tv_specialization.setText(selectedSpecialization);
             //saveUserPreference(Config.SPECIALIZATION,selectedSpecializationId);
             //information = stateDB[0]+","+selectedLanguageId;
             //tv_zila.setText(getString(R.string.select_zila));
@@ -361,26 +349,26 @@ public class DoctorAppoinmentActivity extends BaseActivityWithoutMenu
             //tv_union.setText(getString(R.string.select_union));
         }
         if (str[2].equalsIgnoreCase(Config.CLINIC)) {
-            String selectedClinic = listClinic.get(Integer.parseInt(str[1])).getClinicId().getClinicName();
+            String selectedClinic = " " + listClinic.get(Integer.parseInt(str[1])).getClinicId().getClinicName();
             selectedClinicId = ""+listClinic.get(Integer.parseInt(str[1])).getClinicId().get_id();
-            tv_clinic.setText(" "+selectedClinic);
+            tv_clinic.setText(selectedClinic);
         }
         if (str[2].equalsIgnoreCase(Config.DAYLIST)) {
-            selectedDay = listDay.get(Integer.parseInt(str[1])).getDay();
+            selectedDay = " " + listDay.get(Integer.parseInt(str[1])).getDay();
             selectedDayId = ""+listDay.get(Integer.parseInt(str[1])).get_id();
-            tv_day.setText(" "+selectedDay);
+            tv_day.setText(selectedDay);
         }
         if (str[2].equalsIgnoreCase(Config.DISTRICTLIST)) {
-            selectedDistrict = listDistrict.get(Integer.parseInt(str[1])).getDistrictName();
+            selectedDistrict =" " + listDistrict.get(Integer.parseInt(str[1])).getDistrictName();
             selectedDistrictId = ""+listDistrict.get(Integer.parseInt(str[1])).get_id();
-            tv_district.setText(" "+selectedDistrict);
-            System.out.println("selectedDistrictId:"+selectedDistrictId);
+            tv_district.setText(selectedDistrict);
+            //System.out.println("selectedDistrictId:"+selectedDistrictId);
         }
         if (str[2].equalsIgnoreCase(Config.CITYLIST)) {
-            selectedCity = listCity.get(Integer.parseInt(str[1])).getCityName();
+            selectedCity =" " + listCity.get(Integer.parseInt(str[1])).getCityName();
             selectedCityId = ""+listCity.get(Integer.parseInt(str[1])).get_id();
-            tv_city.setText(" "+selectedCity);
-            System.out.println("selectedCityId:"+selectedCityId);
+            tv_city.setText(selectedCity);
+            //System.out.println("selectedCityId:"+selectedCityId);
         }
     }
 
@@ -407,10 +395,13 @@ public class DoctorAppoinmentActivity extends BaseActivityWithoutMenu
             Response<com.inqube.aamarmedic.model.doctorlistbyname.MSG> res = (Response<com.inqube.aamarmedic.model.doctorlistbyname.MSG>) response;
             Gson gson = new Gson();
             String json = gson.toJson(res.body());
-            listDoctorbyname = res.body().getResult();
+            if (res.body()!=null)
+            {
+                listDoctorbyname = res.body().getResult().getDoc();
 
-            DoctorListByNameDialogBox d = new DoctorListByNameDialogBox(DoctorAppoinmentActivity.this,listDoctorbyname,this,Config.DOCTOR_LIST_BY_NAME);
-            d.show();
+                DoctorListByNameDialogBox d = new DoctorListByNameDialogBox(DoctorAppoinmentActivity.this,listDoctorbyname,this,Config.DOCTOR_LIST_BY_NAME);
+                d.show();
+            }
         }
 
         if (which_method.equalsIgnoreCase("getSpecializationData")) {
@@ -418,19 +409,22 @@ public class DoctorAppoinmentActivity extends BaseActivityWithoutMenu
             Response<com.inqube.aamarmedic.model.specializationlist.MSG> res = (Response<MSG>) response;
             Gson gson = new Gson();
             String json = gson.toJson(res.body());
-            listSpecialization = res.body().getResult().getSpec();
+            if (res.body()!=null)
+            {
+                listSpecialization = res.body().getResult().getSpec();
 
-            tv_specialization.setEnabled(true);
+                tv_specialization.setEnabled(true);
 
-            al_dialog_list = new ArrayList<>();
-            for (int i = 0; i < listSpecialization.size(); i++) {
-                BaseModelClass bm = new BaseModelClass("" + listSpecialization.get(i).get_id(), listSpecialization.get(i).getSpecializationInfo().get(i).getSpecializationName(), "0");
-                al_dialog_list.add(bm);
-            }
+                al_dialog_list = new ArrayList<>();
+                for (int i = 0; i < listSpecialization.size(); i++) {
+                    BaseModelClass bm = new BaseModelClass("" + listSpecialization.get(i).get_id(), listSpecialization.get(i).getSpecializationInfo().get(i).getSpecializationName(), "0");
+                    al_dialog_list.add(bm);
+                }
 
-            if (al_dialog_list.size() > 0) {
-                StateDailog stateDailog = new StateDailog(DoctorAppoinmentActivity.this, al_dialog_list, this, Config.SPECIALIZATION);
-                stateDailog.show();
+                if (al_dialog_list.size() > 0) {
+                    StateDailog stateDailog = new StateDailog(DoctorAppoinmentActivity.this, al_dialog_list, this, Config.SPECIALIZATION);
+                    stateDailog.show();
+                }
             }
         }
         if (which_method.equalsIgnoreCase("getClinicData")) {
@@ -438,19 +432,22 @@ public class DoctorAppoinmentActivity extends BaseActivityWithoutMenu
             Response<com.inqube.aamarmedic.model.clinic.MSG> res = (Response<com.inqube.aamarmedic.model.clinic.MSG>) response;
             Gson gson = new Gson();
             String json = gson.toJson(res.body());
-            listClinic = res.body().getResult();
+            if (res.body()!=null)
+            {
+                listClinic = res.body().getResult();
 
-            tv_clinic.setEnabled(true);
+                tv_clinic.setEnabled(true);
 
-            al_dialog_list = new ArrayList<>();
-            for (int i = 0; i < listClinic.size(); i++) {
-                BaseModelClass bm = new BaseModelClass("" + listClinic.get(i).getClinicId().get_id(), listClinic.get(i).getClinicId().getClinicName(), "0");
-                al_dialog_list.add(bm);
-            }
+                al_dialog_list = new ArrayList<>();
+                for (int i = 0; i < listClinic.size(); i++) {
+                    BaseModelClass bm = new BaseModelClass("" + listClinic.get(i).getClinicId().get_id(), listClinic.get(i).getClinicId().getClinicName(), "0");
+                    al_dialog_list.add(bm);
+                }
 
-            if (al_dialog_list.size() > 0) {
-                StateDailog stateDailog = new StateDailog(DoctorAppoinmentActivity.this, al_dialog_list, this, Config.CLINIC);
-                stateDailog.show();
+                if (al_dialog_list.size() > 0) {
+                    StateDailog stateDailog = new StateDailog(DoctorAppoinmentActivity.this, al_dialog_list, this, Config.CLINIC);
+                    stateDailog.show();
+                }
             }
         }
         if (which_method.equalsIgnoreCase("getDayListData")) {
@@ -458,19 +455,22 @@ public class DoctorAppoinmentActivity extends BaseActivityWithoutMenu
             Response<com.inqube.aamarmedic.model.daylist.MSG> res = (Response<com.inqube.aamarmedic.model.daylist.MSG>) response;
             Gson gson = new Gson();
             String json = gson.toJson(res.body());
-            listDay = res.body().getResult();
+            if (res.body()!=null)
+            {
+                listDay = res.body().getResult();
 
-            tv_day.setEnabled(true);
+                tv_day.setEnabled(true);
 
-            al_dialog_list = new ArrayList<>();
-            for (int i = 0; i < listDay.size(); i++) {
-                BaseModelClass bm = new BaseModelClass("" + listDay.get(i).get_id(), listDay.get(i).getDay(), "0");
-                al_dialog_list.add(bm);
-            }
+                al_dialog_list = new ArrayList<>();
+                for (int i = 0; i < listDay.size(); i++) {
+                    BaseModelClass bm = new BaseModelClass("" + listDay.get(i).get_id(), listDay.get(i).getDay(), "0");
+                    al_dialog_list.add(bm);
+                }
 
-            if (al_dialog_list.size() > 0) {
-                StateDailog stateDailog = new StateDailog(DoctorAppoinmentActivity.this, al_dialog_list, this, Config.DAYLIST);
-                stateDailog.show();
+                if (al_dialog_list.size() > 0) {
+                    StateDailog stateDailog = new StateDailog(DoctorAppoinmentActivity.this, al_dialog_list, this, Config.DAYLIST);
+                    stateDailog.show();
+                }
             }
         }
 
@@ -479,8 +479,9 @@ public class DoctorAppoinmentActivity extends BaseActivityWithoutMenu
             Response<com.inqube.aamarmedic.model.doctorlist.MSG> res = (Response<com.inqube.aamarmedic.model.doctorlist.MSG>) response;
             Gson gson = new Gson();
             String json = gson.toJson(res.body());
-            listDoctor = res.body().getResult();
-
+            if (res.body()!=null)
+            {
+                listDoctor = res.body().getResult();
            /* System.out.println("listsize:"+listDoctor.size());
             System.out.println(""+listDoctor.get(0).getDoctorId().getFirstName() + " " + listDoctor.get(0).getDoctorId().getLastName());
             System.out.println(""+listDoctor.get(0).getDoctorId().getDegree());
@@ -488,8 +489,9 @@ public class DoctorAppoinmentActivity extends BaseActivityWithoutMenu
             System.out.println(""+listDoctor.get(0).getDay() + " " + listDoctor.get(0).getStartTime() + " "
                     +listDoctor.get(0).getEndTime());*/
 
-            DoctorDialogBox d = new DoctorDialogBox(DoctorAppoinmentActivity.this,listDoctor,this, Config.DOCTOR_LIST);
-            d.show();
+                DoctorDialogBox d = new DoctorDialogBox(DoctorAppoinmentActivity.this,listDoctor,this, Config.DOCTOR_LIST);
+                d.show();
+            }
         }
 
         if (which_method.equalsIgnoreCase("getDistrictData")) {
@@ -497,19 +499,22 @@ public class DoctorAppoinmentActivity extends BaseActivityWithoutMenu
             Response<com.inqube.aamarmedic.model.districtlist.MSG> res = (Response<com.inqube.aamarmedic.model.districtlist.MSG>) response;
             Gson gson = new Gson();
             String json = gson.toJson(res.body());
-            listDistrict = res.body().getResult().getDistrict();
+            if (res.body()!=null)
+            {
+                listDistrict = res.body().getResult().getDistrict();
 
-            tv_district.setEnabled(true);
+                tv_district.setEnabled(true);
 
-            al_dialog_list = new ArrayList<>();
-            for (int i = 0; i < listDistrict.size(); i++) {
-                BaseModelClass bm = new BaseModelClass("" + listDistrict.get(i).get_id(), listDistrict.get(i).getDistrictName(), "0");
-                al_dialog_list.add(bm);
-            }
+                al_dialog_list = new ArrayList<>();
+                for (int i = 0; i < listDistrict.size(); i++) {
+                    BaseModelClass bm = new BaseModelClass("" + listDistrict.get(i).get_id(), listDistrict.get(i).getDistrictName(), "0");
+                    al_dialog_list.add(bm);
+                }
 
-            if (al_dialog_list.size() > 0) {
-                StateDailog stateDailog = new StateDailog(DoctorAppoinmentActivity.this, al_dialog_list, this, Config.DISTRICTLIST);
-                stateDailog.show();
+                if (al_dialog_list.size() > 0) {
+                    StateDailog stateDailog = new StateDailog(DoctorAppoinmentActivity.this, al_dialog_list, this, Config.DISTRICTLIST);
+                    stateDailog.show();
+                }
             }
         }
         if (which_method.equalsIgnoreCase("getCityData")) {
@@ -517,19 +522,22 @@ public class DoctorAppoinmentActivity extends BaseActivityWithoutMenu
             Response<com.inqube.aamarmedic.model.citylist.MSG> res = (Response<com.inqube.aamarmedic.model.citylist.MSG>) response;
             Gson gson = new Gson();
             String json = gson.toJson(res.body());
-            listCity = res.body().getResult().getCity();
+            if (res.body()!=null)
+            {
+                listCity = res.body().getResult().getCity();
 
-            tv_city.setEnabled(true);
+                tv_city.setEnabled(true);
 
-            al_dialog_list = new ArrayList<>();
-            for (int i = 0; i < listCity.size(); i++) {
-                BaseModelClass bm = new BaseModelClass("" + listCity.get(i).get_id(), listCity.get(i).getCityName(), "0");
-                al_dialog_list.add(bm);
-            }
+                al_dialog_list = new ArrayList<>();
+                for (int i = 0; i < listCity.size(); i++) {
+                    BaseModelClass bm = new BaseModelClass("" + listCity.get(i).get_id(), listCity.get(i).getCityName(), "0");
+                    al_dialog_list.add(bm);
+                }
 
-            if (al_dialog_list.size() > 0) {
-                StateDailog stateDailog = new StateDailog(DoctorAppoinmentActivity.this, al_dialog_list, this, Config.CITYLIST);
-                stateDailog.show();
+                if (al_dialog_list.size() > 0) {
+                    StateDailog stateDailog = new StateDailog(DoctorAppoinmentActivity.this, al_dialog_list, this, Config.CITYLIST);
+                    stateDailog.show();
+                }
             }
         }
 

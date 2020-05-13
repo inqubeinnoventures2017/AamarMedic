@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -65,23 +66,23 @@ public class AgentBookingListFragment extends BaseFragment implements AllInterfa
 
     private void setUI(View view) {
 
-        ((BaseActivity)getActivity()).pb_loader = (ProgressBar) view.findViewById(R.id.pb_loader);
+        ((BaseActivity)getActivity()).pb_loader = view.findViewById(R.id.pb_loader);
 
-        tv_menu_title = (TextView)((BaseActivity)getActivity()).findViewById(R.id.tv_menu_title);
+        tv_menu_title = getActivity().findViewById(R.id.tv_menu_title);
         tv_menu_title.setText(getString(R.string.agent_booking_list));
 
-        imv_home = (ImageView)((BaseActivity)getActivity()).findViewById(R.id.imv_home);
+        imv_home = getActivity().findViewById(R.id.imv_home);
         imv_home.setVisibility(View.VISIBLE);
 
-        imv_menu = (ImageView) ((BaseActivity)getActivity()).findViewById(R.id.imv_menu);
+        imv_menu = getActivity().findViewById(R.id.imv_menu);
         imv_menu.setVisibility(View.GONE);
 
-        rv_AgentBookinglist = (RecyclerView) view.findViewById(R.id.rv_agentbookinglist);
+        rv_AgentBookinglist = view.findViewById(R.id.rv_agentbookinglist);
 
         imv_home.setOnClickListener(this);
 
-        System.out.println("Agent_id: "+((BaseActivity)getActivity()).getUserPreference(Config.AGENT_ID, ""));
-        System.out.println("Token: " +((BaseActivity)getActivity()).getUserPreference(Config.AUTH_TOKEN, ""));
+        //System.out.println("Agent_id: "+((BaseActivity)getActivity()).getUserPreference(Config.AGENT_ID, ""));
+        //System.out.println("Token: " +((BaseActivity)getActivity()).getUserPreference(Config.AUTH_TOKEN, ""));
 
         if (((BaseActivity)getActivity()).isDeviceOnline()) {
             ((BaseActivity)getActivity()).pb_loader.setVisibility(View.VISIBLE);
@@ -94,7 +95,7 @@ public class AgentBookingListFragment extends BaseFragment implements AllInterfa
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         if (context instanceof OnAamarMedicAgentBookingListFragmentInteractionListener) {
             mListener = (OnAamarMedicAgentBookingListFragmentInteractionListener) context;
@@ -117,27 +118,31 @@ public class AgentBookingListFragment extends BaseFragment implements AllInterfa
             case R.id.imv_home:
                 mListener.onAamarMedicAgentBookingListFragmentInteractionListener();
                 break;
+
+            default:
+                break;
         }
     }
 
     @Override
     public void onSuccess(Object response, String which_method) {
         if (which_method.equalsIgnoreCase("getAgentBookingListData")) {
-            Response<MSG> res = (Response<com.inqube.aamarmedic.model.agentbookinglist.MSG>) response;
+            Response<com.inqube.aamarmedic.model.agentbookinglist.MSG> res = (Response<com.inqube.aamarmedic.model.agentbookinglist.MSG>) response;
             Gson gson = new Gson();
             String json = gson.toJson(res.body());
-            listBooking = res.body().getResult();
+            if (res.body()!=null) {
+                listBooking = res.body().getResult();
 
-            if (listBooking.size()>0)
-            {
-                layoutManager = new LinearLayoutManager(getActivity());
-                rv_AgentBookinglist.setLayoutManager(layoutManager);
-                rv_AgentBookinglist.setHasFixedSize(true);
+                if (listBooking.size() > 0) {
+                    layoutManager = new LinearLayoutManager(getActivity());
+                    rv_AgentBookinglist.setLayoutManager(layoutManager);
+                    rv_AgentBookinglist.setHasFixedSize(true);
 
-                adapter = new SelectPatientBookingListDialogBoxAdapter(getActivity(), listBooking,this, dialogCallback);
-                rv_AgentBookinglist.setAdapter(adapter);
-            }else {
-                mListener.onAamarMedicAgentBookingListFragmentInteractionListener(getString(R.string.please_try_again));
+                    adapter = new SelectPatientBookingListDialogBoxAdapter(getActivity(), listBooking, this, dialogCallback);
+                    rv_AgentBookinglist.setAdapter(adapter);
+                } else {
+                    mListener.onAamarMedicAgentBookingListFragmentInteractionListener(getString(R.string.please_try_again));
+                }
             }
         }
     }
