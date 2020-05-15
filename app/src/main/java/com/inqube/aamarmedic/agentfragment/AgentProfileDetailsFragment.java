@@ -64,7 +64,7 @@ public class AgentProfileDetailsFragment extends BaseFragment implements AllInte
     private EditText edt_name, edt_mobileno, edt_emailid;
     private TextView tv_lang,tv_menu_title;
     private Button btnSubmit;
-    private ProgressBar pb_loader;
+    ProgressBar pb_loader;
     private String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+", SelectedLanguageId;
     private Uri fileUri;
     private ArrayList<BaseModelClass> al_dialog_list;
@@ -88,7 +88,7 @@ public class AgentProfileDetailsFragment extends BaseFragment implements AllInte
     public void onResume() {
         super.onResume();
         if (!resume) {
-            pb_loader = view.findViewById(R.id.pb_loader);
+            ((BaseActivity)getActivity()).pb_loader = (ProgressBar) view.findViewById(R.id.pb_loader);
             requestPermission();
             setUI(view);
         }
@@ -106,7 +106,7 @@ public class AgentProfileDetailsFragment extends BaseFragment implements AllInte
 
         btnSubmit = view.findViewById(R.id.btnSubmit);
 
-        pb_loader = view.findViewById(R.id.pb_loader);
+        pb_loader =(ProgressBar) view.findViewById(R.id.pb_loader);
 
         imv_menu =  getActivity().findViewById(R.id.imv_menu);
         imv_menu.setVisibility(View.GONE);

@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left|center_vertical"
-            android:layout_marginLeft="@dimen/_10dp"
+            android:layout_marginLeft="@dimen/_15dp"
             android:background="@drawable/menus" />
 
         <ImageView
@@ -32,12 +32,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left|center_vertical"
-            android:layout_marginLeft="@dimen/_50dp"
+            android:layout_marginLeft="@dimen/_60dp"
             android:background="@drawable/back" />
 
         <ImageView
             android:id="@+id/imv_logo"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center"
             android:src="@drawable/menu_logo" />
@@ -47,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right|center_vertical"
-            android:layout_marginRight="@dimen/_10dp"
+            android:layout_marginRight="@dimen/_15dp"
             android:src="@drawable/home" />
     </FrameLayout>
 
