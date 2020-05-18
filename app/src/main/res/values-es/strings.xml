@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name"></string>
+    <string name="app_name">Epoc</string>
     <string name="dismiss">Descartar</string>
     <string name="close_app">¿Quieres cerrar la aplicación?</string>
     <string name="reload">RECARGAR</string>
@@ -176,5 +176,10 @@
     <string name="agent_booking_list">Lista de reserva de agente</string>
     <string name="please_provide_doctor_name">Por favor proporcione el nombre del médico.</string>
     <string name="find_doctor">Encontrar doctora</string>
+    <string name="select">-- Seleccione --</string>
+    <string name="dash_board">Tablero</string>
+    <string name="agent_profile">Perfil del agente</string>
+    <string name="covid_19">COVID-19</string>
+    <string name="this_mbno_already_registered">Este móvil ya no está registrado.</string>
 
 </resources>

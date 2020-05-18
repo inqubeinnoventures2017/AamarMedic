@@ -55,11 +55,13 @@ public class SelectPatientBookingListDialogBoxAdapter extends RecyclerView.Adapt
     @Override
     public void onBindViewHolder(@NonNull SelectPatientBookingListDialogBoxAdapter.RecyclerViewHolder holder, int position) {
         if (list_booking.get(position).get_id() != null) {
-            holder.tv_patient_name.setText("" + list_booking.get(position).getPatientName());
-            holder.tv_doctors_name.setText("" + list_booking.get(position).getDoctorSchedule().getDoctorId().getFirstName() + " " +
-                    list_booking.get(position).getDoctorSchedule().getDoctorId().getLastName());
-            holder.tv_date_of_appointment.setText("" + list_booking.get(position).getDoctorSchedule().getDay() + " " +
-                    list_booking.get(position).getDoctorSchedule().getEndTime());
+            holder.tv_patient_name.setText(list_booking.get(position).getPatientName());
+            String docName = list_booking.get(position).getDoctorScheduleInfo().getDoctorInfo().getFirstName() + " " +
+                    list_booking.get(position).getDoctorScheduleInfo().getDoctorInfo().getLastName();
+            holder.tv_doctors_name.setText(docName);
+            String appdate = list_booking.get(position).getDoctorScheduleInfo().getDay() + " " +
+                    list_booking.get(position).getDoctorScheduleInfo().getEndTime();
+            holder.tv_date_of_appointment.setText(appdate);
 
             try {
                 String time = list_booking.get(position).getCreatedAt();

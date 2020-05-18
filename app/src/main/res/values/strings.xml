@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name"></string>
+    <string name="app_name">Epoc</string>
     <string name="dismiss">Dismiss</string>
     <string name="close_app">Do you want to close the app?</string>
     <string name="reload">RELOAD</string>

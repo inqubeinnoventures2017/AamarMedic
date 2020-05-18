@@ -10,16 +10,16 @@ public class Result {
 
     @SerializedName("address")
     private String mAddress;
-    @SerializedName("booked_by")
-    private BookedBy mBookedBy;
-    @SerializedName("city")
-    private City mCity;
+    @SerializedName("agent_info")
+    private AgentInfo mAgentInfo;
+    @SerializedName("city_info")
+    private CityInfo mCityInfo;
     @SerializedName("created_at")
     private String mCreatedAt;
-    @SerializedName("district")
-    private District mDistrict;
-    @SerializedName("doctor_schedule")
-    private DoctorSchedule mDoctorSchedule;
+    @SerializedName("district_info")
+    private DistrictInfo mDistrictInfo;
+    @SerializedName("doctor_schedule_info")
+    private DoctorScheduleInfo mDoctorScheduleInfo;
     @SerializedName("is_blocked")
     private Long mIsBlocked;
     @SerializedName("is_deleted")
@@ -34,8 +34,6 @@ public class Result {
     private String mPinCode;
     @SerializedName("remark")
     private String mRemark;
-    @SerializedName("__v")
-    private Long m_V;
     @SerializedName("_id")
     private String m_id;
 
@@ -47,20 +45,20 @@ public class Result {
         mAddress = address;
     }
 
-    public BookedBy getBookedBy() {
-        return mBookedBy;
+    public AgentInfo getAgentInfo() {
+        return mAgentInfo;
     }
 
-    public void setBookedBy(BookedBy bookedBy) {
-        mBookedBy = bookedBy;
+    public void setAgentInfo(AgentInfo agentInfo) {
+        mAgentInfo = agentInfo;
     }
 
-    public City getCity() {
-        return mCity;
+    public CityInfo getCityInfo() {
+        return mCityInfo;
     }
 
-    public void setCity(City city) {
-        mCity = city;
+    public void setCityInfo(CityInfo cityInfo) {
+        mCityInfo = cityInfo;
     }
 
     public String getCreatedAt() {
@@ -71,20 +69,20 @@ public class Result {
         mCreatedAt = createdAt;
     }
 
-    public District getDistrict() {
-        return mDistrict;
+    public DistrictInfo getDistrictInfo() {
+        return mDistrictInfo;
     }
 
-    public void setDistrict(District district) {
-        mDistrict = district;
+    public void setDistrictInfo(DistrictInfo districtInfo) {
+        mDistrictInfo = districtInfo;
     }
 
-    public DoctorSchedule getDoctorSchedule() {
-        return mDoctorSchedule;
+    public DoctorScheduleInfo getDoctorScheduleInfo() {
+        return mDoctorScheduleInfo;
     }
 
-    public void setDoctorSchedule(DoctorSchedule doctorSchedule) {
-        mDoctorSchedule = doctorSchedule;
+    public void setDoctorScheduleInfo(DoctorScheduleInfo doctorScheduleInfo) {
+        mDoctorScheduleInfo = doctorScheduleInfo;
     }
 
     public Long getIsBlocked() {
@@ -141,14 +139,6 @@ public class Result {
 
     public void setRemark(String remark) {
         mRemark = remark;
-    }
-
-    public Long get_V() {
-        return m_V;
-    }
-
-    public void set_V(Long _V) {
-        m_V = _V;
     }
 
     public String get_id() {

@@ -85,41 +85,41 @@ public class AgentBookingListDetailsDialogBox extends Dialog implements
                 tv_patient_Mbno.setText(list_items.get(position).getMobile());
             }
 
-            if (list_items.get(position).getDoctorSchedule().getDoctorId().getFirstName()!=null)
+            if (list_items.get(position).getDoctorScheduleInfo().getDoctorInfo().getFirstName()!=null)
             {
-                tv_doc_name.setText(list_items.get(position).getDoctorSchedule().getDoctorId().getFirstName());
-                if (list_items.get(position).getDoctorSchedule().getDoctorId().getLastName()!=null) {
-                    String doctorName = list_items.get(position).getDoctorSchedule().getDoctorId().getFirstName()+" "
-                            + list_items.get(position).getDoctorSchedule().getDoctorId().getLastName();
+                tv_doc_name.setText(list_items.get(position).getDoctorScheduleInfo().getDoctorInfo().getFirstName());
+                if (list_items.get(position).getDoctorScheduleInfo().getDoctorInfo().getLastName()!=null) {
+                    String doctorName = list_items.get(position).getDoctorScheduleInfo().getDoctorInfo().getFirstName()+" "
+                            + list_items.get(position).getDoctorScheduleInfo().getDoctorInfo().getLastName();
                     tv_doc_name.setText(doctorName);
                 }
             }
 
-            System.out.println("SpecializationName:"+list_items.get(position).getDoctorSchedule().getDoctorId().getSpecializationId().getSpecializationName());
-            if (list_items.get(position).getDoctorSchedule().getDoctorId().getSpecializationId()!=null)
+            System.out.println("SpecializationName:"+list_items.get(position).getDoctorScheduleInfo().getDoctorInfo().getSpecializationInfo().getSpecializationTitle());
+            if (list_items.get(position).getDoctorScheduleInfo().getDoctorInfo().getSpecializationInfo().getSpecializationTitle()!=null)
             {
-                tv_doctors_spec.setText(list_items.get(position).getDoctorSchedule().getDoctorId().getSpecializationId().getSpecializationName());
+                tv_doctors_spec.setText(list_items.get(position).getDoctorScheduleInfo().getDoctorInfo().getSpecializationInfo().getSpecializationTitle());
             }
 
-            if (list_items.get(position).getDoctorSchedule().getClinicId().getClinicName()!=null)
+            if (list_items.get(position).getDoctorScheduleInfo().getClinicInfo().getClinicName()!=null)
             {
-                tv_clinic_name.setText(list_items.get(position).getDoctorSchedule().getClinicId().getClinicName());
+                tv_clinic_name.setText(list_items.get(position).getDoctorScheduleInfo().getClinicInfo().getClinicName());
             }
 
-            if (list_items.get(position).getDoctorSchedule().getStartTime()!=null && list_items.get(position).getDoctorSchedule().getEndTime()!=null)
+            if (list_items.get(position).getDoctorScheduleInfo().getStartTime()!=null && list_items.get(position).getDoctorScheduleInfo().getEndTime()!=null)
             {
-                String doctorSchedule = list_items.get(position).getDoctorSchedule().getStartTime() + " - " + list_items.get(position).getDoctorSchedule().getEndTime();
+                String doctorSchedule = list_items.get(position).getDoctorScheduleInfo().getStartTime() + " - " + list_items.get(position).getDoctorScheduleInfo().getEndTime();
                 tv_doctor_time.setText(doctorSchedule);
             }
 
-            if (list_items.get(position).getDoctorSchedule().getDay()!=null)
+            if (list_items.get(position).getDoctorScheduleInfo().getDay()!=null)
             {
-                tv_date_of_appointment.setText(list_items.get(position).getDoctorSchedule().getDay());
+                tv_date_of_appointment.setText(list_items.get(position).getDoctorScheduleInfo().getDay());
             }
 
             try
             {
-                String time = list_items.get(position).getBookedBy().getCreatedAt();
+                String time = list_items.get(position).getDoctorScheduleInfo().getCreatedAt();
                 SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd yyyy HH:mm:ss zzz");
                 Date date = sdf.parse(time);
                 sdf=new SimpleDateFormat("EEE dd/MM/yyyy HH:mm");

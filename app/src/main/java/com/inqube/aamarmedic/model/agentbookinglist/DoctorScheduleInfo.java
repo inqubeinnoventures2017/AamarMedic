@@ -6,16 +6,16 @@ import com.google.gson.annotations.SerializedName;
 
 @Generated("net.hexar.json2pojo")
 @SuppressWarnings("unused")
-public class DoctorSchedule {
+public class DoctorScheduleInfo {
 
-    @SerializedName("clinicId")
-    private ClinicId mClinicId;
+    @SerializedName("clinic_info")
+    private ClinicInfo mClinicInfo;
     @SerializedName("created_at")
     private String mCreatedAt;
     @SerializedName("day")
     private String mDay;
-    @SerializedName("doctorId")
-    private DoctorId mDoctorId;
+    @SerializedName("doctor_info")
+    private DoctorInfo mDoctorInfo;
     @SerializedName("end_time")
     private String mEndTime;
     @SerializedName("is_blocked")
@@ -24,17 +24,15 @@ public class DoctorSchedule {
     private Long mIsDeleted;
     @SerializedName("start_time")
     private String mStartTime;
-    @SerializedName("__v")
-    private Long m_V;
     @SerializedName("_id")
     private String m_id;
 
-    public ClinicId getClinicId() {
-        return mClinicId;
+    public ClinicInfo getClinicInfo() {
+        return mClinicInfo;
     }
 
-    public void setClinicId(ClinicId clinicId) {
-        mClinicId = clinicId;
+    public void setClinicInfo(ClinicInfo clinicInfo) {
+        mClinicInfo = clinicInfo;
     }
 
     public String getCreatedAt() {
@@ -53,12 +51,12 @@ public class DoctorSchedule {
         mDay = day;
     }
 
-    public DoctorId getDoctorId() {
-        return mDoctorId;
+    public DoctorInfo getDoctorInfo() {
+        return mDoctorInfo;
     }
 
-    public void setDoctorId(DoctorId doctorId) {
-        mDoctorId = doctorId;
+    public void setDoctorInfo(DoctorInfo doctorInfo) {
+        mDoctorInfo = doctorInfo;
     }
 
     public String getEndTime() {
@@ -91,14 +89,6 @@ public class DoctorSchedule {
 
     public void setStartTime(String startTime) {
         mStartTime = startTime;
-    }
-
-    public Long get_V() {
-        return m_V;
-    }
-
-    public void set_V(Long _V) {
-        m_V = _V;
     }
 
     public String get_id() {
