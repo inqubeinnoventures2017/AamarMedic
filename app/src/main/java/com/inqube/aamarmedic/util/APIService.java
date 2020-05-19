@@ -115,9 +115,12 @@ public interface APIService {
                                                                                @Field("language_id") String language_id,
                                                                                @Query("token") String token);
 
-    //Agent Profile Image Update
-    //http://128.199.165.116:3008/user/update/agent/image
-    //PUT	"1. id 2. old_image_name 3. image_url 4. token"
+   /* @FormUrlEncoded
+    @PUT("user/update/agent/image")
+    Call<com.inqube.aamarmedic.model.agentprofileimageupdate.MSG>updateAgentProfileImage(@Field("id") String id,
+                                                                               @Field("old_image_name") String old_image_name,
+                                                                               @Field("image_url") String image_url,
+                                                                               @Query("token") String token);*/
 
     @GET("user/logout")
     Call<com.inqube.aamarmedic.model.logout.MSG> logoutData(@Query("token") String token);

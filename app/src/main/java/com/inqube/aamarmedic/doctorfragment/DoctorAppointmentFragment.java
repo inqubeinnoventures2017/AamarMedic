@@ -288,6 +288,7 @@ public class DoctorAppointmentFragment extends BaseFragment implements AllInterf
                     ((BaseActivity) getActivity()).pb_loader.setVisibility(View.VISIBLE);
 
                     //System.out.println("token:" + ((BaseActivity)getActivity()).getUserPreference(Config.AUTH_TOKEN,""));
+                    System.out.println("Language_id:"+((BaseActivity) getActivity()).getUserPreference(Config.LANGUAGE_ID, ""));
 
                     UtilClass.getInstance().getSpecializationData(((BaseActivity) getActivity()), DoctorAppointmentFragment.this,
                             ((BaseActivity) getActivity()).getUserPreference(Config.AUTH_TOKEN, ""),

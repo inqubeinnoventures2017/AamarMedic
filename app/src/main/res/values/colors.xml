@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorPrimary">#000</color>
+    <color name="colorPrimaryDark">#000</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="textColorWhite">#FFFFFF</color>
     <color name="textColorMaroon">#FF5722</color>
     <color name="color_forgot_psw">#257C3E</color>
     <color name="color_grey_line">#8F9190</color>
-    <color name="color_app_header">#AF111D</color>
+    <color name="color_app_header">#b7080f</color>
     <color name="color_grey">#162D2F</color>
     <color name="otc_medicine_price_color">#AC141E</color>
     <color name="textColorBlack">#000000</color>

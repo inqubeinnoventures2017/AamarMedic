@@ -187,8 +187,15 @@ public class AgentProfileDetailsFragment extends BaseFragment implements AllInte
                         System.out.println("Name:"+edt_name.getText().toString());
                         System.out.println("Email:"+edt_emailid.getText().toString());
                         System.out.println("Mobile:"+edt_mobileno.getText().toString());
-                        System.out.println("Language Id:"+SelectedLanguageId);
+                        System.out.println("Language Id:"+listProfile.get(0).getLanguageId().get_id());
+                        System.out.println("SelectedLanguageId:"+SelectedLanguageId);
                         System.out.println("Token:"+((BaseActivity) getActivity()).getUserPreference(Config.AUTH_TOKEN, ""));*/
+
+                        if (SelectedLanguageId==null)
+                        {
+                            SelectedLanguageId = listProfile.get(0).getLanguageId().get_id();
+                        }
+                        //System.out.println("SelectedLanguageId:"+SelectedLanguageId);
 
                         UtilClass.getInstance().updateAgentProfileData(((BaseActivity)getActivity()),AgentProfileDetailsFragment.this,
                                 ((BaseActivity) getActivity()).getUserPreference(Config.AGENT_ID, ""),
@@ -228,7 +235,7 @@ public class AgentProfileDetailsFragment extends BaseFragment implements AllInte
 
     @Override
     public void onSuccess(Object response, String which_method) {
-        ((BaseActivity) getActivity()).pb_loader.setVisibility(View.GONE);
+
         if (which_method.equalsIgnoreCase("updateAgentProfileData"))
         {
             Response<com.inqube.aamarmedic.model.agentprofileupdate.MSG> res = (Response<com.inqube.aamarmedic.model.agentprofileupdate.MSG>) response;
@@ -391,7 +398,7 @@ public class AgentProfileDetailsFragment extends BaseFragment implements AllInte
 
                             myFile = FileUtils.getFile(getActivity(), uri);
                             String path = myFile.getAbsolutePath();
-                            //System.out.println("path:"+path);
+                            System.out.println("path:"+path);
                             Cursor cursor = null;
                             try {
                                 cursor = getActivity().getContentResolver().query(uri, null, null, null, null);
@@ -403,7 +410,6 @@ public class AgentProfileDetailsFragment extends BaseFragment implements AllInte
                             } finally {
                                 cursor.close();
                             }
-
 
                             getActivity().getContentResolver().notifyChange(fileUri, null);
                             ContentResolver cr = getActivity().getContentResolver();
@@ -419,7 +425,7 @@ public class AgentProfileDetailsFragment extends BaseFragment implements AllInte
                                 imageUri.add(0, fileUri);
 
                                 String filename = getRealPathFromUri(getActivity(), fileUri).substring(path.lastIndexOf("/") + 1);
-                                //System.out.println("filename: "+filename);
+                                System.out.println("filename: "+filename);
                                 try {
 
                                     JSONObject file = new JSONObject();
@@ -443,11 +449,9 @@ public class AgentProfileDetailsFragment extends BaseFragment implements AllInte
                             }
                         }));
                         t.start();*/
-                                Toast.makeText(getActivity(), fileUri.toString(),
-                                        Toast.LENGTH_LONG).show();
+                                //Toast.makeText(getActivity(), fileUri.toString(),Toast.LENGTH_LONG).show();
                             } catch (Exception e) {
-                                Toast.makeText(getActivity(), getString(R.string.failed_to_load), Toast.LENGTH_SHORT)
-                                        .show();
+                                //Toast.makeText(getActivity(), getString(R.string.failed_to_load), Toast.LENGTH_SHORT).show();
                                 Log.e("Camera", e.toString());
                             }
                         }

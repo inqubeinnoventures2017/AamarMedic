@@ -176,7 +176,7 @@
     <string name="please_provide_doctor_name">Please provide the doctor name.</string>
     <string name="find_doctor">Find Doctor</string>
     <string name="select">-- Select --</string>
-    <string name="dash_board">Dash Board</string>
+    <string name="dash_board">Dashboard</string>
     <string name="agent_profile">Agent Profile</string>
     <string name="covid_19">COVID-19</string>
     <string name="this_mbno_already_registered">This mobile no already registered.</string>
