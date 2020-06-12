@@ -1,10 +1,10 @@
 package com.inqube.aamarmedic.telehealthfragment;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,15 +13,11 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AlertDialog;
 
 import com.inqube.aamarmedic.AgentDashboardMainFragmentActivity;
-import com.inqube.aamarmedic.DashboardActivity;
-import com.inqube.aamarmedic.DoctorAppoinmentActivity;
 import com.inqube.aamarmedic.R;
-import com.inqube.aamarmedic.agentfragment.AgentDashboardFragment;
 import com.inqube.aamarmedic.app.Config;
 import com.inqube.aamarmedic.base.BaseActivity;
 import com.inqube.aamarmedic.base.BaseFragment;
@@ -141,6 +137,19 @@ public class Medical_II_Fragment extends BaseFragment implements AllInterfaces.R
                         toast.setView(layout);//setting the view of custom toast layout
                         toast.show();*/
 
+                        /*AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                        //builder.setTitle("Name");        // set the custom layout
+                        final View customLayout = getLayoutInflater().inflate(R.layout.toast_patient_info, null);
+                        builder.setView(customLayout);        // add a button
+                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });        // create and show the alert dialog
+                        AlertDialog dialog = builder.create();
+                        dialog.show();*/
+
                         UtilClass.getInstance().submitTeleHealthMedicalData(((BaseActivity) getActivity()), Medical_II_Fragment.this,
                                 ((BaseActivity) getActivity()).getDataPreference(Config.PATIENT_ID, ""), pref.getString(Config.BODY_TEMP,""),
                                 pref.getBoolean(Config.HAVING_COUGH,false), pref.getString(Config.COUGH_PATTERN,""), pref.getBoolean(Config.COUGH_MORE_THAN_15DAYS,false),
@@ -179,20 +188,26 @@ public class Medical_II_Fragment extends BaseFragment implements AllInterfaces.R
 
         if (which_method.equalsIgnoreCase("submitTeleHealthMedicalData")) {
 
-            //Creating the LayoutInflater instance
-            LayoutInflater li = getLayoutInflater();
-            //Getting the View object as defined in the customtoast.xml file
-            View layout = li.inflate(R.layout.toast_patient_info, view.findViewById(R.id.custom_toast_layout));
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            //builder.setTitle("Name");        // set the custom layout
+            final View customLayout = getLayoutInflater().inflate(R.layout.toast_patient_info, null);
+            builder.setView(customLayout);        // add a button
 
-            //Creating the Toast object
-            Toast toast = new Toast(getActivity().getApplicationContext());
-            toast.setDuration(Toast.LENGTH_LONG);
-            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-            toast.setView(layout);//setting the view of custom toast layout
-            toast.show();
+            /*Button btn_ok_patient_registration;
+            btn_ok_patient_registration = view.findViewById(R.id.btn_ok_patient_registration);
+            btn_ok_patient_registration.setOnClickListener(this);*/
 
-            startActivity(new Intent( ((BaseActivity)getActivity()), AgentDashboardMainFragmentActivity.class));
-            ((BaseActivity)getActivity()).finish();
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                    startActivity(new Intent( ((BaseActivity)getActivity()), AgentDashboardMainFragmentActivity.class));
+                    ((BaseActivity)getActivity()).finish();
+                }
+            });
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
         }
     }
 

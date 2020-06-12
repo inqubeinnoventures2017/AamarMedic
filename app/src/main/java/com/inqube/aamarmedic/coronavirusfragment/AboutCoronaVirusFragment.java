@@ -28,8 +28,6 @@ public class AboutCoronaVirusFragment extends BaseFragment implements AllInterfa
     private View view;
     private boolean resume;
     private ImageView imv_home, imv_menu;
-    private TextView tv_menu_title;
-
     private OnAamarMedicCoronaVirusFragmentInteractionListener mListener;
 
     @Override
@@ -53,9 +51,6 @@ public class AboutCoronaVirusFragment extends BaseFragment implements AllInterfa
     private void setUI(View view) {
 
         wv =(WebView)view.findViewById(R.id.wv_content);
-
-        tv_menu_title = (TextView)((BaseActivity)getActivity()).findViewById(R.id.tv_menu_title);
-        tv_menu_title.setText(getString(R.string.covid_19));
 
         imv_menu = (ImageView)((BaseActivity)getActivity()).findViewById(R.id.imv_menu);
         imv_menu.setVisibility(View.GONE);

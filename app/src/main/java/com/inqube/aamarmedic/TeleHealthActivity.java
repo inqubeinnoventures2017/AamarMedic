@@ -44,7 +44,6 @@ public class TeleHealthActivity extends BaseActivity
     private CustomViewPager viewPager;
     private CoordinatorLayout col_holder;
     private ImageView imv_home, imv_back, imv_menu;
-    private TextView tv_menu_title;
     //private FrameLayout fm_container_left;
 
     @Override
@@ -74,9 +73,6 @@ public class TeleHealthActivity extends BaseActivity
 
         imv_back =(ImageView) toolbar.findViewById(R.id.imv_back);
         imv_back.setVisibility(View.GONE);
-
-        tv_menu_title = (TextView) toolbar.findViewById(R.id.tv_menu_title);
-        tv_menu_title.setText(getString(R.string.patient_registration));
 
         imv_home.setOnClickListener(this);
        /* fm_container_left = (FrameLayout) findViewById(R.id.fm_container_left);

@@ -26,7 +26,7 @@ public class AgentDashboardFragment extends BaseFragment implements
         View.OnClickListener {
 
     private View view;
-    private TextView tv_covid, tv_health,tv_doctor, tv_order, tv_menu_title;
+    private TextView tv_covid, tv_health,tv_doctor, tv_order;
     private OnAamarMedicAgentDashboardFragmentInteractionListener mListener;
     private boolean resume;
     private LinearLayout ll_main_container;
@@ -40,9 +40,6 @@ public class AgentDashboardFragment extends BaseFragment implements
     }
 
     private void setUI(View view) {
-
-        tv_menu_title = (TextView)((BaseActivity)getActivity()).findViewById(R.id.tv_menu_title);
-        tv_menu_title.setText(getString(R.string.dash_board));
 
         tv_covid = (TextView)view.findViewById(R.id.tv_covid);
         tv_health = (TextView)view.findViewById(R.id.tv_health);

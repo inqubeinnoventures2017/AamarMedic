@@ -76,7 +76,7 @@ public class DoctorAppointmentFragment extends BaseFragment implements AllInterf
     private List<com.inqube.aamarmedic.model.appointment.Result> listAppointment;
 
     private TextView tv_specialization, tv_clinic, tv_day, tv_doctor_name, tv_doctor_degree, tv_doctor_specialist, tv_hospital, tv_hospital_addr, tv_doctor_time,
-            tv_district, tv_city, tv_menu_title,tvAppointmentDate;
+            tv_district, tv_city, tvAppointmentDate;
 
     private Button btnShowDoctor, btnSubmit;
     private EditText edt_search, edt_patientname, edt_mobileno, edt_address, edt_pinno, edt_remarks;
@@ -116,10 +116,6 @@ public class DoctorAppointmentFragment extends BaseFragment implements AllInterf
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void setUI(View view) throws ParseException {
-
-        tv_menu_title = getActivity().findViewById(R.id.tv_menu_title);
-        tv_menu_title.setText(getString(R.string.find_doctor));
-
         edt_search =  view.findViewById(R.id.edt_search);
 
         imv_doc = view.findViewById(R.id.imv_doc);
@@ -186,8 +182,8 @@ public class DoctorAppointmentFragment extends BaseFragment implements AllInterf
                             tv_clinic.setText("");
                             tv_day.setText("");
 
-                            System.out.println("Token:"+((BaseActivity) getActivity()).getUserPreference(Config.AUTH_TOKEN, ""));
-                            System.out.println("LanguageId:"+((BaseActivity) getActivity()).getUserPreference(Config.LANGUAGE_ID, ""));
+                            //System.out.println("Token:"+((BaseActivity) getActivity()).getUserPreference(Config.AUTH_TOKEN, ""));
+                            //System.out.println("LanguageId:"+((BaseActivity) getActivity()).getUserPreference(Config.LANGUAGE_ID, ""));
 
                             UtilClass.getInstance().getDoctorListbByNameData(((BaseActivity) getActivity()), DoctorAppointmentFragment.this,
                                     edt_search.getText().toString(), ((BaseActivity) getActivity()).getUserPreference(Config.AUTH_TOKEN, ""),
@@ -242,25 +238,6 @@ public class DoctorAppointmentFragment extends BaseFragment implements AllInterf
         if (!((BaseActivity) getActivity()).isDeviceOnline()) {
             mListener.onAamarMedicDoctorAppointmentFragmentInteractionListener(getString(R.string.sorry_you_not_online_msg));
         }
-
-        /*String inputStart = "01/01/2020";
-        String inputStop = "12/31/2020";  // 258 Fridays.
-        // String inputStop = "01/01/2009";  // 0 Friday.
-        // String inputStop = "01/02/2009";  // 1 Friday.
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern ( "MM/dd/yyyy" );
-
-        LocalDate start = LocalDate.parse ( inputStart , formatter );
-        LocalDate stop = LocalDate.parse ( inputStop , formatter );
-
-        List<LocalDate> fridays = new ArrayList<> ();  // Collect each Friday found.
-        LocalDate nextOrSameFriday = start.with ( TemporalAdjusters.nextOrSame ( DayOfWeek.FRIDAY ) );
-        // Loop while we have a friday in hand (non-null) AND that friday is not after our stop date (isBefore or isEqual the stop date).
-        while ( ( null != nextOrSameFriday ) & (  ! nextOrSameFriday.isAfter ( stop ) ) ) {
-            fridays.add ( nextOrSameFriday );  //  Remember this friday.
-            nextOrSameFriday = nextOrSameFriday.plusWeeks ( 1 );  // Move to the next Friday, setting up for next iteration of this loop.
-        }
-        System.out.println("nextOrSameFriday"+nextOrSameFriday);*/
     }
 
     @Override
@@ -288,7 +265,7 @@ public class DoctorAppointmentFragment extends BaseFragment implements AllInterf
                     ((BaseActivity) getActivity()).pb_loader.setVisibility(View.VISIBLE);
 
                     //System.out.println("token:" + ((BaseActivity)getActivity()).getUserPreference(Config.AUTH_TOKEN,""));
-                    System.out.println("Language_id:"+((BaseActivity) getActivity()).getUserPreference(Config.LANGUAGE_ID, ""));
+                    //System.out.println("Language_id:"+((BaseActivity) getActivity()).getUserPreference(Config.LANGUAGE_ID, ""));
 
                     UtilClass.getInstance().getSpecializationData(((BaseActivity) getActivity()), DoctorAppointmentFragment.this,
                             ((BaseActivity) getActivity()).getUserPreference(Config.AUTH_TOKEN, ""),
@@ -345,20 +322,6 @@ public class DoctorAppointmentFragment extends BaseFragment implements AllInterf
                 //((BaseActivity)getActivity()).pb_loader.setVisibility(View.VISIBLE);
                 edt_search.setText("");
 
-                /*//Creating the LayoutInflater instance
-                LayoutInflater li = getLayoutInflater();
-                //Getting the View object as defined in the customtoast.xml file
-                View layout = li.inflate(R.layout.activity_appointment_book, view.findViewById(R.id.ctl_appointment_book));
-
-                //Creating the Toast object
-                TextView tv_toast_msg = (TextView) layout.findViewById(R.id.tv_toast_msg);
-                tv_toast_msg.setText(getString(R.string.appointment_book));
-                Toast toast = new Toast(getActivity().getApplicationContext());
-                toast.setDuration(Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-                toast.setView(layout);//setting the view of custom toast layout
-                toast.show();*/
-
                 // Checking validity whether user provided all required parameter or not
                 if ((tv_specialization.getText().length() < 1) &&
                         (tv_clinic.getText().length() < 1) &&
@@ -378,11 +341,11 @@ public class DoctorAppointmentFragment extends BaseFragment implements AllInterf
                         selectDay = selectedDay.toLowerCase();
                     }
 
-                    System.out.println("spec_id:" + selectedSpecializationId);
+                    /*System.out.println("spec_id:" + selectedSpecializationId);
                     System.out.println("clinic_id:" + selectedClinicId);
                     System.out.println("day:" + selectDay);
                     System.out.println("token:" + ((BaseActivity) getActivity()).getUserPreference(Config.AUTH_TOKEN, ""));
-                    System.out.println("LANGUAGE_ID:" + ((BaseActivity) getActivity()).getUserPreference(Config.LANGUAGE_ID, ""));
+                    System.out.println("LANGUAGE_ID:" + ((BaseActivity) getActivity()).getUserPreference(Config.LANGUAGE_ID, ""));*/
 
                     if (((BaseActivity) getActivity()).isDeviceOnline()) {
                         UtilClass.getInstance().getDoctorListData(((BaseActivity) getActivity()), DoctorAppointmentFragment.this,
@@ -735,27 +698,25 @@ public class DoctorAppointmentFragment extends BaseFragment implements AllInterf
             Gson gson = new Gson();
             String json = gson.toJson(res.body());
 
-            //createSnackBar(col_holder, res.body().getMessage());
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            //builder.setTitle("Name");        // set the custom layout
+            final View customLayout = getLayoutInflater().inflate(R.layout.activity_appointment_book, null);
+            builder.setView(customLayout);        // add a button
 
-            //Creating the LayoutInflater instance
-            LayoutInflater li = getLayoutInflater();
-            //Getting the View object as defined in the customtoast.xml file
-            View layout = li.inflate(R.layout.activity_appointment_book, view.findViewById(R.id.ctl_appointment_book));
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                    getActivity().getSupportFragmentManager()
+                            .beginTransaction()
+                            .add(R.id.fm_container, new AgentDashboardFragment(), "AgentDashboardFragment")
+                            .addToBackStack("AgentDashboardFragment")
+                            .commit();
+                }
+            });
 
-            //Creating the Toast object
-            TextView tv_toast_msg = (TextView) layout.findViewById(R.id.tv_toast_msg);
-            tv_toast_msg.setText(getString(R.string.appointment_book));
-            Toast toast = new Toast(getActivity().getApplicationContext());
-            toast.setDuration(Toast.LENGTH_LONG);
-            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-            toast.setView(layout);//setting the view of custom toast layout
-            toast.show();
-
-            getActivity().getSupportFragmentManager()
-                    .beginTransaction()
-                    .add(R.id.fm_container, new AgentDashboardFragment(), "AgentDashboardFragment")
-                    .addToBackStack("AgentDashboardFragment")
-                    .commit();
+            AlertDialog dialog = builder.create();
+            dialog.show();
         }
     }
 

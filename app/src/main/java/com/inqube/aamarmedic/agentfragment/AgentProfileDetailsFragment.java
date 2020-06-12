@@ -62,7 +62,7 @@ public class AgentProfileDetailsFragment extends BaseFragment implements AllInte
     private boolean resume;
     private ImageView imv_home, imv_user_pic, imv_menu, imv_user_img;
     private EditText edt_name, edt_mobileno, edt_emailid;
-    private TextView tv_lang,tv_menu_title;
+    private TextView tv_lang;
     private Button btnSubmit;
     ProgressBar pb_loader;
     private String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+", SelectedLanguageId;
@@ -113,9 +113,6 @@ public class AgentProfileDetailsFragment extends BaseFragment implements AllInte
 
         imv_home = getActivity().findViewById(R.id.imv_home);
         imv_home.setVisibility(View.VISIBLE);
-
-        tv_menu_title = getActivity().findViewById(R.id.tv_menu_title);
-        tv_menu_title.setText(getString(R.string.agent_profile));
 
         imv_home.setOnClickListener(this);
         imv_user_pic.setOnClickListener(this);
@@ -375,7 +372,6 @@ public class AgentProfileDetailsFragment extends BaseFragment implements AllInte
             }
         }
     }
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

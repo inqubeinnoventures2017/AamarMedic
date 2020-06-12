@@ -68,9 +68,15 @@ public class SelectDoctorListByNameDialogBoxAdapter extends RecyclerView.Adapter
             }
 
             holder.tv_doctor_specialist.setText("");
-            if (list_doctor.get(position).getDoctorInfo().getSpecializationInfo().getSpecializationDetails().get(0).getSpecializationName()!=null)
+
+            System.out.println("Error:"+list_doctor.get(position).getDoctorInfo().getSpecializationInfo().getSpecializationDetails().size());
+
+            if (list_doctor.get(position).getDoctorInfo().getSpecializationInfo().getSpecializationDetails().size() > 0)
             {
-                holder.tv_doctor_specialist.setText(list_doctor.get(position).getDoctorInfo().getSpecializationInfo().getSpecializationDetails().get(0).getSpecializationName());
+                if (list_doctor.get(position).getDoctorInfo().getSpecializationInfo().getSpecializationDetails().get(0).getSpecializationName()!=null)
+                {
+                    holder.tv_doctor_specialist.setText(list_doctor.get(position).getDoctorInfo().getSpecializationInfo().getSpecializationDetails().get(0).getSpecializationName());
+                }
             }
 
             if (list_doctor.get(position).getDoctorInfo().getImageUrl().trim().length() > 0)

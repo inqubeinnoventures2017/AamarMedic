@@ -17,6 +17,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingTop="@dimen/_10dp"
         android:background="@drawable/menu_bg">
 
         <ImageView
@@ -50,18 +51,6 @@
             android:layout_marginRight="@dimen/_15dp"
             android:src="@drawable/home" />
     </FrameLayout>
-
-        <TextView
-            android:id="@+id/tv_menu_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/color_app_header"
-            android:gravity="center"
-            android:paddingBottom="@dimen/_5dp"
-            android:textAllCaps="false"
-            android:textColor="@color/textColorWhite"
-            android:textSize="@dimen/_15sp"
-            android:textStyle="bold" />
 
     </LinearLayout>
 </androidx.appcompat.widget.Toolbar>

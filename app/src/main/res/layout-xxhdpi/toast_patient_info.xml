@@ -16,10 +16,11 @@
         android:src="@drawable/find_doc_pop_up" />
 
     <LinearLayout
-        android:layout_width="@dimen/_200dp"
+        android:layout_width="@dimen/_250dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_marginTop="@dimen/_15dp"
+        android:padding="@dimen/_30dp"
         android:background="@drawable/edt_style"
         android:orientation="vertical">
 
@@ -27,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:padding="@dimen/_15dp"
+            android:padding="@dimen/_10dp"
             android:text="@string/patient_info"
             android:textStyle="italic"
             android:textColor="@color/textColorBlack"
@@ -37,19 +38,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:padding="@dimen/_10dp"
             android:text="@string/contact_soon"
             android:textStyle="italic"
             android:textColor="@color/textColorBlack"
             android:textSize="@dimen/_15sp" />
 
-        <Button
+        <!--<Button
+            android:id="@+id/btn_ok_patient_registration"
             android:layout_width="@dimen/_50dp"
             android:layout_height="@dimen/_30dp"
             android:layout_gravity="bottom|center"
             android:layout_marginTop="@dimen/_10dp"
             android:background="@drawable/ok_bg"
             android:text="@string/ok"
-            android:textAlignment="center" />
+            android:textAlignment="center" />-->
     </LinearLayout>
 </LinearLayout>

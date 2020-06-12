@@ -25,6 +25,14 @@
                 android:layout_gravity="left" />
 
         </androidx.drawerlayout.widget.DrawerLayout>-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:gravity="center_horizontal"
+            android:text="@string/patient_registration"
+            android:textColor="@color/textColorWhite"
+            android:textSize="@dimen/_15sp" />
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -35,8 +43,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/menu_bg"
-                app:tabSelectedTextColor="@color/textColorWhite"
                 app:tabIndicatorColor="@color/textColorWhite"
+                app:tabSelectedTextColor="@color/textColorWhite"
                 app:tabTextColor="@color/tabTextColor" />
 
             <FrameLayout

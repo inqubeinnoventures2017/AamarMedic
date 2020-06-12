@@ -20,7 +20,6 @@ public class AgentBookingListMainFragmentActivity extends BaseActivity implement
 
     private FrameLayout fm_container,fm_container_left;
     private ImageView imv_back, imv_menu, imv_home;
-    private TextView tv_menu_title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +34,6 @@ public class AgentBookingListMainFragmentActivity extends BaseActivity implement
         fm_container_left = (FrameLayout) findViewById(R.id.fm_container_left);
         col_holder = (CoordinatorLayout) findViewById(R.id.col_holder);
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        tv_menu_title = (TextView) findViewById(R.id.tv_menu_title);
 
         imv_menu = (ImageView) toolbar.findViewById(R.id.imv_menu);
         imv_menu.setVisibility(View.VISIBLE);

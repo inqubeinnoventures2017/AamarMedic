@@ -45,7 +45,6 @@ public class AgentBookingListFragment extends BaseFragment implements AllInterfa
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
     private AllInterfaces.DialogCallback dialogCallback;
-    private TextView tv_menu_title;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -67,9 +66,6 @@ public class AgentBookingListFragment extends BaseFragment implements AllInterfa
     private void setUI(View view) {
 
         ((BaseActivity)getActivity()).pb_loader = view.findViewById(R.id.pb_loader);
-
-        tv_menu_title = getActivity().findViewById(R.id.tv_menu_title);
-        tv_menu_title.setText(getString(R.string.agent_booking_list));
 
         imv_home = getActivity().findViewById(R.id.imv_home);
         imv_home.setVisibility(View.VISIBLE);
